@@ -27,7 +27,17 @@ module.exports.routes = {
   '/': {
     view: 'pages/homepage'
   },
-
+  '/login': {
+    view: 'pages/login'
+  },
+  '/loginFacebook':{
+    action: 'Login/loginFacebook'
+  },
+  '/userLogin':{
+    action: 'Login/userLogin'
+  },
+  'GET /auth/facebook': {controller: 'LoginController', action: 'loginFacebook'},
+'GET /auth/facebook/callback':    {controller: 'LoginController', action: 'facebookCallback'}
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
