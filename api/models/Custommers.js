@@ -17,16 +17,12 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
-    password: {
-        type: 'string',
-        columnType: 'varchar'
-    },
     email: {
         type: 'string',
         columnType: 'varchar'
     },
     phone :{
-        type: 'number',
+        type: 'string',
         columnType: 'varchar'
     },
     facebook_id: {
@@ -45,19 +41,26 @@ module.exports = {
         type: 'number',
         columnType: 'tinyint'
     },
-    avatar: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    role_id: {
+    product_id: {
         type: 'number',
         columnType: 'int'
     },
-    status: {
+    address_id: {
         type: 'number',
-        columnType: 'tinyint'
+        columnType: 'int'
     }
 
+  },
+  checkUpdate: async function(req){
+    var userId = req.id;
+    var name = req.first_name + req.last_name ;
+    var email = req.email;
+    var userRow = await User.findOne({username: userId});
+      if(userRow){
+        
+      }else{
+        var createUser = await User.create({username: 'quynhtram', name: 'name', email: 'email'});
+      }
   }
 };
 

@@ -21,7 +21,7 @@ module.exports.datastores = {
   default: {
 
      adapter: require('sails-mysql'),
-      url: 'mysql://root:@localhost/fbsaleapi',
+      url: 'mysql://admin_fbsale:nn123456@42.112.21.207:3306/admin_fbsale',
 
   },
 

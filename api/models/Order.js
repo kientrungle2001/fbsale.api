@@ -9,53 +9,57 @@ module.exports = {
 
   attributes: {
 
-    name: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    username: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    password: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    email: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    phone :{
-        type: 'number',
-        columnType: 'varchar'
-    },
-    facebook_id: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    parent_name: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    source: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    gender: {
-        type: 'number',
-        columnType: 'tinyint'
-    },
-    avatar: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    role_id: {
+    custommer_id: {
         type: 'number',
         columnType: 'int'
     },
-    status: {
+    custommer_name: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_email: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_phone: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_address :{
+        type: 'string',
+        columnType: 'varchar'
+    },
+    state: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    total: {
         type: 'number',
-        columnType: 'tinyint'
+        columnType: 'float'
+    },
+    payment_date: {
+        type: 'number',
+        columnType: 'date'
+    },
+    discount: {
+        type: 'number',
+        columnType: 'float'
+    },
+    user_id: {
+        type: 'number',
+        columnType: 'int'
+    },
+    total_before_discount:{
+        type: 'number',
+        columnType: 'float'
+    },
+    tax : {
+        type: 'number',
+        columnType: 'float'
+    },
+    total_before_tax: {
+        type: 'number',
+        columnType: 'float'
     }
 
   }
