@@ -1,16 +1,17 @@
 module.exports = {
-
+  tableName:'social_post_templates',
   attributes: {
 
-    key: {
+    name: {
         type: 'string',
         columnType: 'varchar'
     },
-    value: {
+    content: {
         type: 'string',
         columnType: 'text'
+    },
+    type: {
+        type: 'string'
     }
-
-  },
-  
+  }
 };

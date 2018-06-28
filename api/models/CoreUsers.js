@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  tableName: 'core_users',
   attributes: {
 
     name: {

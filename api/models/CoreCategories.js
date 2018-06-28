@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  tableName: 'core_categories',
   attributes: {
 
     name: {

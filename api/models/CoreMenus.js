@@ -1,10 +1,14 @@
 module.exports = {
-
+  tableName: 'core_menus',
   attributes: {
 
-    roles_id: {
-        type: 'number',
-        columnType: 'int'
+    name: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    url: {
+        type: 'string',
+        columnType: 'varchar'
     },
     controller: {
         type: 'string',
@@ -13,10 +17,6 @@ module.exports = {
     action: {
         type: 'string',
         columnType: 'varchar'
-    },
-    status: {
-        type: 'number',
-        columnType: 'tinyint'
     }
   }
 };

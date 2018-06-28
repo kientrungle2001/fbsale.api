@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'ecommerce_products',
   attributes: {
 
     provider_id: {
@@ -22,7 +22,13 @@ module.exports = {
     type: {
         type: 'string',
         columnType: 'varchar'
-    }
+    },
+    // bảng liên kết nhiều nhiều của model: EcommerceProuductCategories- EcommerceProducts
+    /*owners:{
+      collection: 'EcommerceProuductCategories',
+      via: 'products',
+      through: 'categories_products'
+    }*/
 
   },
   

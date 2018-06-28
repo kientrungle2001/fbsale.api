@@ -1,8 +1,8 @@
 module.exports = {
-
+  tableName: 'ecommerce_custommer_categories',
   attributes: {
 
-    product_id: {
+    custommer_id: {
         type: 'number',
         columnType: 'int'
     },
@@ -11,5 +11,4 @@ module.exports = {
         columnType: 'int'
     }
   }
-  
 };

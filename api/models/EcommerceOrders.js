@@ -6,61 +6,62 @@
  */
 
 module.exports = {
-
+  tableName: 'ecommerce_orders',
   attributes: {
 
-    name: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    username: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    email: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    phone :{
-        type: 'string',
-        columnType: 'varchar'
-    },
-    facebook_id: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    parent_name: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    source: {
-        type: 'string',
-        columnType: 'varchar'
-    },
-    gender: {
-        type: 'number',
-        columnType: 'tinyint'
-    },
-    product_id: {
+    custommer_id: {
         type: 'number',
         columnType: 'int'
     },
-    address_id: {
+    custommer_name: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_email: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_phone: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    custommer_address :{
+        type: 'string',
+        columnType: 'varchar'
+    },
+    state: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+    total: {
+        type: 'number',
+        columnType: 'float'
+    },
+    payment_date: {
+        type: 'number',
+        columnType: 'date'
+    },
+    discount: {
+        type: 'number',
+        columnType: 'float'
+    },
+    user_id: {
         type: 'number',
         columnType: 'int'
+    },
+    total_before_discount:{
+        type: 'number',
+        columnType: 'float'
+    },
+    tax : {
+        type: 'number',
+        columnType: 'float'
+    },
+    total_before_tax: {
+        type: 'number',
+        columnType: 'float'
     }
 
-  },
-  checkUpdate: async function(req){
-    var userId = req.id;
-    var name = req.first_name + req.last_name ;
-    var email = req.email;
-    var userRow = await User.findOne({username: userId});
-      if(userRow){
-        
-      }else{
-        var createUser = await User.create({username: 'quynhtram', name: 'name', email: 'email'});
-      }
   }
 };
 

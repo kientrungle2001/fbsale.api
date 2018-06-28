@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'social_posts',
   attributes: {
 
     facebook_id: {

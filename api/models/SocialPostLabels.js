@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'social_post_labels',
   attributes: {
 
     post_id: {

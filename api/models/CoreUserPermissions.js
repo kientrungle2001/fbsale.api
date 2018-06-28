@@ -1,20 +1,24 @@
 module.exports = {
-
+    
+ 
+  tableName: 'core_user_permissions',
   attributes: {
 
-    name: {
+    roles_id: {
+        type: 'number',
+        columnType: 'int'
+    },
+    controller: {
         type: 'string',
         columnType: 'varchar'
     },
-    address_id: {
-        type: 'number',
+    action: {
+        type: 'string',
         columnType: 'varchar'
     },
     status: {
         type: 'number',
         columnType: 'tinyint'
     }
-
-  },
-  
+  }
 };

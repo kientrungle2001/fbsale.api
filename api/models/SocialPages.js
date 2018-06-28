@@ -1,22 +1,25 @@
 module.exports = {
-
+  tableName: 'social_pages',
   attributes: {
 
     name: {
         type: 'string',
         columnType: 'varchar'
     },
-    url: {
+    facebook_id: {
         type: 'string',
         columnType: 'varchar'
     },
-    controller: {
+    page_id: {
         type: 'string',
         columnType: 'varchar'
     },
-    action: {
-        type: 'string',
-        columnType: 'varchar'
+    
+    status: {
+        type: 'number',
+        columnType: 'tinyint'
     }
-  }
+
+  },
+  
 };

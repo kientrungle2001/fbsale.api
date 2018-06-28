@@ -1,14 +1,18 @@
 module.exports = {
-
+  tableName: 'ecommerce_providers',
   attributes: {
 
     name: {
         type: 'string',
         columnType: 'varchar'
     },
-    color: {
-        type: 'string',
+    address_id: {
+        type: 'number',
         columnType: 'varchar'
+    },
+    status: {
+        type: 'number',
+        columnType: 'tinyint'
     }
 
   },

@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'ecommerce_order_items',
   attributes: {
 
     product_id: {

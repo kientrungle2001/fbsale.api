@@ -1,17 +1,16 @@
 module.exports = {
-
+  tableName: 'core_settings',
   attributes: {
 
-    name: {
+    key: {
         type: 'string',
         columnType: 'varchar'
     },
-    content: {
+    value: {
         type: 'string',
         columnType: 'text'
-    },
-    type: {
-        type: 'string'
     }
-  }
+
+  },
+  
 };

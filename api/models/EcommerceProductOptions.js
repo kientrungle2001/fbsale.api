@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'ecommerce_product_options',
   attributes: {
 
     product_id: {

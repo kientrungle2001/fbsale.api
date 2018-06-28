@@ -1,5 +1,5 @@
 module.exports = {
-
+  tableName: 'ecommerce_shippers',
   attributes: {
 
     name: {
