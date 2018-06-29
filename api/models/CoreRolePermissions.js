@@ -1,7 +1,7 @@
 module.exports = {
     
  
-  tableName: 'core_user_permissions',
+  tableName: 'core_role_permissions',
   attributes: {
 
     roles_id: {

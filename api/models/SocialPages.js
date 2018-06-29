@@ -18,8 +18,12 @@ module.exports = {
     status: {
         type: 'number',
         columnType: 'tinyint'
+    },
+    // Khai báo liên kết với model SocialPosts
+    ref_posts:{
+        collection: 'SocialPosts',
+        via: 'page_id'
     }
-
   },
   
 };
