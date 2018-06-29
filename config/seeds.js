@@ -8,7 +8,7 @@
  * http://github.com/frostme/sails-seed
  */
 module.exports.seeds = {
-	user: [
+	coreusers: [
 	{
 		name: 'Lê Trung Kiên',
 		email: 'kientrungle2001@gmail.com',
