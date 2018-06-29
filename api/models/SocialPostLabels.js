@@ -3,11 +3,19 @@ module.exports = {
   attributes: {
 
     post_id: {
-        type: 'string'
+        type: 'string',
+        columnType: 'varchar'
     },
     label_id: {
-        type: 'number'
-    }
+        type: 'number',
+        columnType: 'int'
+    },
+    // Khai bao lien ket toi models CoreLabels
+    label_id: {
+    	model: 'CoreLabels'        
+    	
+    },
+    
   },
   
 };

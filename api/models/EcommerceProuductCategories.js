@@ -13,7 +13,7 @@ module.exports = {
     // bảng liên kết nhiều nhiều của model: EcommerceProuductCategories- EcommerceProducts
     /*products:{
       collection: 'EcommerceProducts',
-      via: 'owner',
+      via: 'owners',
       through: 'categories_products'
     }*/
   }

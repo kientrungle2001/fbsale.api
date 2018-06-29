@@ -3,17 +3,24 @@ module.exports = {
   attributes: {
 
     facebook_id: {
-        type: 'number'
+        type: 'string',
+        columnType: 'varchar'
     },
     has_phone: {
         type: 'number',
         columnType: 'tinyint'
     },
     page_id: {
-        type: 'string'
+        type: 'string',
+        columnType: 'varchar'
     },
     asign_id: {
-        type: 'number'
+        type: 'number',
+        columnType: 'int'
+    },
+     // Khai báo liên kết với model SocialPages
+    page_id: {
+        model: 'SocialPages'
     }
   },
   

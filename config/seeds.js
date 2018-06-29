@@ -7,8 +7,8 @@
  * For more information on configuration, check out:
  * http://github.com/frostme/sails-seed
  */
-module.exports.seeds = {
-	user: [
+module.exports.seeds = { 
+	core_users: [
 	{
 		name: 'Lê Trung Kiên',
 		email: 'kientrungle2001@gmail.com',
