@@ -29,6 +29,10 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+    shipper_id:{
+        type: 'number',
+        columnType: 'int'
+    },
     state: {
         type: 'string',
         columnType: 'varchar'
@@ -60,8 +64,20 @@ module.exports = {
     total_before_tax: {
         type: 'number',
         columnType: 'float'
+    },
+    // ket noi model  EcommerceOrders voi model EcommerceCustommers
+    custommer_id: {
+        model: 'EcommerceCustommers'
+    },
+    //Ket noi model EcommerceOrders voi model EcommerceOrderItems
+    ref_order_item:{
+        collection: 'EcommerceOrderItems',
+        via: 'order_id'
+    },
+    // ket noi model EcommerceOrders voi model EcommerceShippers
+    shipper_id: {
+        model: 'EcommerceShippers'
     }
-
   }
 };
 

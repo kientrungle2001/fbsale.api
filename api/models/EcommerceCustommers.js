@@ -48,6 +48,16 @@ module.exports = {
     address_id: {
         type: 'number',
         columnType: 'int'
+    },
+    // ket noi model EcommerceCustommers voi model EcommerceOrders
+    ref_order: {
+      collection: 'EcommerceOrders',
+      via: 'custommer_id'
+    },
+    // ket noi model EcommerceCustommers voi model EcommerceAddress
+    ref_address: {
+      collection: 'EcommerceAddress',
+      via: 'address_id'
     }
 
   },

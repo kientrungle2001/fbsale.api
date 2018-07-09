@@ -21,6 +21,11 @@ module.exports = {
     type: {
         type: 'string',
         columnType: 'varchar'
+    },
+    // ket noi model EcommerceShippers voi model EcommerceOrders
+    ref_order:{
+        collection: 'EcommerceOrders',
+        via: 'shipper_id'
     }
 
   },

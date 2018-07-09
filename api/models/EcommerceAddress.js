@@ -41,6 +41,10 @@ module.exports = {
     newAttr: {
         type: 'number',
         columnType: 'int'
+    },
+    //ket noi model ecommerceaddressAddress voi ecommerceaddressCustommmers
+    address_id:{
+        model: 'EcommerceCustommers'
     }
   },
   /*checkUpdate: async function(req){

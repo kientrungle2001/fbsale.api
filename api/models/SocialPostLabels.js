@@ -15,7 +15,11 @@ module.exports = {
     	model: 'CoreLabels'        
     	
     },
-    
+    // Ket noi giua model SocilaPostLabels voi model SocialPosts
+    post_id: {
+        model: 'SocialPosts',
+        unique: true
+    }
   },
   
 };

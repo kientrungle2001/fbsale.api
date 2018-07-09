@@ -56,6 +56,10 @@ module.exports = {
     status: {
         type: 'number',
         columnType: 'tinyint'
+    },
+    // Khai bao ket noi toi model CoreRoles
+    role_id: {
+        model: 'CoreRoles'
     }
 
   }
