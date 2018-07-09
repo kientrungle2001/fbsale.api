@@ -22,7 +22,8 @@ var verifyHandler = function(req, token, tokenSecret, profile, done) {
         first_name: response.body.first_name,  //jshint ignore:line
         last_name: response.body.last_name,    //jshint ignore:line
         email: response.body.email,
-        gender: response.body.gender
+        gender: response.body.gender,
+        token: token
       };
 
       return done(null, data);

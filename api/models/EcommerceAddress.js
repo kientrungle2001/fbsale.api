@@ -47,15 +47,5 @@ module.exports = {
         model: 'EcommerceCustommers'
     }
   },
-  /*checkUpdate: async function(req){
-    var userId = req.id;
-    var name = req.first_name + req.last_name ;
-    var email = req.email;
-    var userRow = await User.findOne({username: userId});
-      if(userRow){
-        
-      }else{
-        var createUser = await User.create({username: 'quynhtram', name: 'name', email: 'email'});
-      }
-  }*/
+  
 };
