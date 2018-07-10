@@ -40,8 +40,13 @@ module.exports.routes = {
   '/userLogin':{
     action: 'Login/userLogin'
   },
+  
   'GET /auth/facebook': {controller: 'LoginController', action: 'loginFacebook'},
-'GET /auth/facebook/callback':    {controller: 'LoginController', action: 'facebookCallback'}
+  'GET /auth/facebook/callback':    {controller: 'LoginController', action: 'facebookCallback'},
+  
+  'POST /coreusers/datatable':{
+    action: 'CoreUsers/datatable'
+  },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
