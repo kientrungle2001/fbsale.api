@@ -69,15 +69,16 @@ module.exports = {
 
   },
   checkUpdate: async function(req){
-        var userId = req.id;
+        var facebook_id = req.id;
         var name = req.first_name + req.last_name ;
         var email = req.email;
-        var userRow = await CoreUsers.findOne({username: userId});
-          if(userRow){
-            
-          }else{
-            var createUser = await CoreUsers.create({username: 'quynhtram', name: 'name', email: 'email'});
+        var gender= req.gender;
+        var facebook_token = req.token;
+        var userRow = await CoreUsers.findOne({facebook_id: facebook_id});
+          if(!userRow){
+            var createUser = await CoreUsers.create({'name': name , 'username': facebook_id, 'email': email, 'facebook_id': facebook_id, 'facebook_token': facebook_token, 'gender': gender, 'status': 1});
           }
+        return 'true';
     }
 };
 
