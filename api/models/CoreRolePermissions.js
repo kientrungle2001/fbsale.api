@@ -4,7 +4,7 @@ module.exports = {
   tableName: 'core_role_permissions',
   attributes: {
 
-    roles_id: {
+    role_id: {
         type: 'number',
         columnType: 'int'
     },
@@ -19,6 +19,10 @@ module.exports = {
     status: {
         type: 'number',
         columnType: 'tinyint'
+    },
+    // Khai bao ket noi toi model CoreRoles
+    role_id: {
+        model: 'CoreRoles'
     }
   }
 };

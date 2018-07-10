@@ -4,7 +4,7 @@ module.exports = {
     var txtEmail= req.body.txtEmail;
     var txtPassword= req.body.txtPassword;
     //res.json(txtPassword);
-  	var checkLogin = await User.find(
+  	var checkLogin = await CoreUsers.find(
       {
         email: txtEmail, password: txtPassword
       }
@@ -15,14 +15,21 @@ module.exports = {
   },
   loginFacebook:  function(req, res, next) {
 
-      passport.authenticate('facebook', { scope: ['email', 'user_about_me']})(req, res, next);
+      passport.authenticate('facebook', { scope: ['email', 'user_about_me',
+'manage_pages',
+'pages_manage_instant_articles',
+'pages_show_list',
+'publish_pages',
+'read_insights',
+'read_page_mailboxes'
+        ]})(req, res, next);
   },
   facebookCallback:  function(req, res, next) {
     passport.authenticate('facebook', function(err, user) {
-      //res.json(user);
-    var pagrow =  User.checkUpdate(user);
+      res.json(user);
+    /*var pagrow =  CoreUsers.checkUpdate(user);
       // update database
-      res.json("Login true");
+      res.json("Login true");*/
     })(req, res, next);
   },
   signup: async function (req, res) {  },

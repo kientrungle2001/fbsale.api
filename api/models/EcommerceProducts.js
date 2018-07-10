@@ -23,12 +23,15 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
-    // bảng liên kết nhiều nhiều của model: EcommerceProuductCategories- EcommerceProducts
-    /*owners:{
-      collection: 'EcommerceProuductCategories',
-      via: 'products',
-      through: 'categories_products'
-    }*/
+    // Ket noi model EcommerceProducts voi EcommerceProductOptions
+    ref_product_options: {
+      collection: 'EcommerceProductOptions',
+      via: 'product_id'
+    },
+    // Ket noi model EcommerceProducts voi model  EcommerceProviders
+    provider_id: {
+        model: 'EcommerceProviders'
+    }
 
   },
   

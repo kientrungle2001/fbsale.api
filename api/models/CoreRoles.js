@@ -5,6 +5,16 @@ module.exports = {
     name: {
         type: 'string',
         columnType: 'varchar'
+    },
+    // Khai bao kết nối tới model CoreUsers
+    ref_user: {
+    	collection: 'CoreUsers',
+    	via: 'role_id'
+    },
+    // Khai bao kết nối tới model CoreRolePermissions
+    ref_role_permissions: {
+       collection: 'CoreRolePermissions',
+       via: 'role_id'
     }
   }
 };

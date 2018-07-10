@@ -29,6 +29,10 @@ module.exports = {
     product_option_name: {
         type: 'string',
         columnType: 'varchar'
+    },
+    //Ket noi model EcommerceOrderItems  voi model EcommerceOrders
+    order_id: {
+        model: 'EcommerceOrders'
     }
   }
 };

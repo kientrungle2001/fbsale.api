@@ -13,6 +13,11 @@ module.exports = {
     status: {
         type: 'number',
         columnType: 'tinyint'
+    },
+    // Ket noi model EcommerceProviders voi model EcommerceProducts
+    ref_product: {
+        collection: 'EcommerceProducts',
+        via: 'provider_id'
     }
 
   },

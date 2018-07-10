@@ -33,6 +33,10 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+    facebook_token: {
+        type: 'string',
+        columnType: 'varchar'
+    },
     parent_name: {
         type: 'string',
         columnType: 'varchar'
@@ -56,8 +60,24 @@ module.exports = {
     status: {
         type: 'number',
         columnType: 'tinyint'
-    }
+    },
+    // Khai bao ket noi toi model CoreRoles
+    role_id: {
+        model: 'CoreRoles'
+    },
+    
 
-  }
+  },
+  checkUpdate: async function(req){
+        var userId = req.id;
+        var name = req.first_name + req.last_name ;
+        var email = req.email;
+        var userRow = await CoreUsers.findOne({username: userId});
+          if(userRow){
+            
+          }else{
+            var createUser = await CoreUsers.create({username: 'quynhtram', name: 'name', email: 'email'});
+          }
+    }
 };
 
