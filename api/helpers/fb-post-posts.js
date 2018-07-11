@@ -34,7 +34,8 @@ module.exports = {
 
     },
     time: {
-      type: 'string',
+      type: 'ref',
+      defaultsTo: '1531319861',
       example: 'tomorrow',
       description: 'Thời gian đăng bài',
       

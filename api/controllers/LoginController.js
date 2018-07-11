@@ -73,7 +73,7 @@ module.exports = {
             res.json(messages);*/
 
             // Post bài viết: theo lịch đặt sẵn
-            var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Have a nice day!', published: false, time:'tomorrow' });
+            var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Have a nice day 111!', published: false, time:1531319861 });
             res.json(messages);
 
           } 
