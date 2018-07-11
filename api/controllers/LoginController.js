@@ -40,16 +40,10 @@ module.exports = {
         if(row) {
           // Lấy danh sách các page
            
-        /*var dataPages = await sails.helpers.fbGetPages.with({ token:user.token });        
+        var dataPages = await sails.helpers.fbGetPages.with({ token:user.token });        
         //res.json(dataPages);
         // Hiển thị danh sách pages
-          if(dataPages){
-
-            dataPages.forEach(function(value){
-              console.log(value['id']);
-
-            });  
-            
+          if(dataPages){                       
             pageId1=  dataPages[0]['id'];
             pageName1= dataPages[0]['name'];
             console.log(pageName1);
@@ -57,14 +51,14 @@ module.exports = {
             var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
             res.json(postInPages);
             //Get Url của bài viết
-            var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
+            /*var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
             postInPage1= postInPages[0]['id'];
             //var getUrlPost = await sails.helpers.fbGetUrlPosts.with({ postId:postInPage1, pageName: pageName1 });
-            res.json(postInPage1);
+            res.json(postInPage1);*/
             // Get các ảnh từ Page
-            var photosInPages = await sails.helpers.fbGetPhotos.with({ pageId:pageId1, token: user.token });
-            res.json(photosInPages);
-          } */
+            /*var photosInPages = await sails.helpers.fbGetPhotos.with({ pageId:pageId1, token: user.token });
+            res.json(photosInPages);*/
+          } 
           
         }
       }
