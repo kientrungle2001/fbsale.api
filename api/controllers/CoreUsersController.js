@@ -12,5 +12,10 @@ module.exports = {
 		var recordsTotal = await CoreUsers.count({where: where});
 		var result = {data: data, recordsTotal: recordsTotal, recordsFiltered: recordsTotal};
 		res.json(result);
+	},
+	roles: async function(req, res) {
+		var roles = await CoreRoles.find({});
+		res.json(roles);
 	}
+	
 };
