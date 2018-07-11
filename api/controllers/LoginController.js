@@ -25,36 +25,46 @@ module.exports = {
         'read_page_mailboxes'
         ]})(req, res, next);
   },
-  facebookCallback: function(req, res, next) {
-    passport.authenticate('facebook', function(err, user) {
+  facebookCallback: async function(req, res, next) {
+    await passport.authenticate('facebook',async function(err, user) {
       if(user){
-          console.log(user);
-        req.session.token = user.token;
-        res.json(req.session.token);
-        //req.session.username = req.first_name + req.last_name ;
-         // update database
-        var row =  CoreUsers.checkUpdate(user);
-       
+        var row = await CoreUsers.checkUpdate(user);
+        
+        //res.json(row);
+        // set session
+        /*req.session.token = user.token;
+        req.session.userId = row['id'];
+        req.session.username = row['username'];
+        req.session.facebookId = row['facebook_id'];*/
+        
         if(row) {
           // Lấy danh sách các page
-           var page_url=  'https://graph.facebook.com/v3.0/me/accounts?type=page&access_token='+user.token;
-           var page_options = {method: 'GET', url: page_url, json: true};
-           request(page_options, function (err, response) {
-            if (err) {
-              //return 'null';
-              res.json('error');
-            }
-
-            var page_data = {
-              page_id: response.body.data
-
-            };
-            console.log(page_data);
-          
-             res.json(page_data);
-          });
-        
            
+        /*var dataPages = await sails.helpers.fbGetPages.with({ token:user.token });        
+        //res.json(dataPages);
+        // Hiển thị danh sách pages
+          if(dataPages){
+
+            dataPages.forEach(function(value){
+              console.log(value['id']);
+
+            });  
+            
+            pageId1=  dataPages[0]['id'];
+            pageName1= dataPages[0]['name'];
+            console.log(pageName1);
+            // Get các bài viết từ Page
+            var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
+            res.json(postInPages);
+            //Get Url của bài viết
+            var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
+            postInPage1= postInPages[0]['id'];
+            //var getUrlPost = await sails.helpers.fbGetUrlPosts.with({ postId:postInPage1, pageName: pageName1 });
+            res.json(postInPage1);
+            // Get các ảnh từ Page
+            var photosInPages = await sails.helpers.fbGetPhotos.with({ pageId:pageId1, token: user.token });
+            res.json(photosInPages);
+          } */
           
         }
       }

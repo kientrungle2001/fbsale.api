@@ -26,7 +26,7 @@ module.exports = {
         columnType: 'varchar'
     },
     phone :{
-        type: 'number',
+        type: 'string',
         columnType: 'varchar'
     },
     facebook_id: {
@@ -75,10 +75,12 @@ module.exports = {
         var gender= req.gender;
         var facebook_token = req.token;
         var userRow = await CoreUsers.findOne({facebook_id: facebook_id});
+        //console.log(userRow);
           if(!userRow){
-            var createUser = await CoreUsers.create({'name': name , 'username': facebook_id, 'email': email, 'facebook_id': facebook_id, 'facebook_token': facebook_token, 'gender': gender, 'status': 1});
+            var createUser = await CoreUsers.create({'name': name , 'username': facebook_id, 'email': email, 'facebook_id': facebook_id, 'facebook_token': facebook_token, 'gender': gender, 'status': 1}).fetch();
+            return createUser;
           }
-        return 'true';
+        return userRow;
     }
 };
 
