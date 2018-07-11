@@ -46,18 +46,36 @@ module.exports = {
           if(dataPages){                       
             pageId1=  dataPages[0]['id'];
             pageName1= dataPages[0]['name'];
-            console.log(pageName1);
+            page_access_token= dataPages[0]['access_token'];
+            //console.log(page_access_token);
             // Get các bài viết từ Page
-            var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
-            res.json(postInPages);
-            //Get Url của bài viết
             /*var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
-            postInPage1= postInPages[0]['id'];
-            //var getUrlPost = await sails.helpers.fbGetUrlPosts.with({ postId:postInPage1, pageName: pageName1 });
-            res.json(postInPage1);*/
+            res.json(postInPages);*/
+            //Get Url của bài viết            
+            
+            /*var getUrlPost = await sails.helpers.fbGetUrlPosts.with({ postId:'2125248527733637_2144299215828568'});
+            res.json(getUrlPost);*/
+
             // Get các ảnh từ Page
             /*var photosInPages = await sails.helpers.fbGetPhotos.with({ pageId:pageId1, token: user.token });
             res.json(photosInPages);*/
+
+            // Get các comments của bài viết
+           /* var commentsInPost = await sails.helpers.fbGetComments.with({ postId:'2125248527733637_2144299215828568', token: user.token });
+            res.json(commentsInPost);*/
+
+            // Get các Messages của page
+            /*var messages = await sails.helpers.fbGetMessages.with({ pageId:'2125248527733637', token: page_access_token });
+            res.json(messages);*/
+
+            // Post message : trả lời tin nhắn
+            /*var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token, content:'Chào bạn!'  });
+            res.json(messages);*/
+
+            // Post bài viết: theo lịch đặt sẵn
+            var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Have a nice day!', published: false, time:'tomorrow' });
+            res.json(messages);
+
           } 
           
         }

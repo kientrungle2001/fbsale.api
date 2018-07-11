@@ -41,7 +41,7 @@ module.exports = {
               return exits.success(err);
             }
 
-            var message_data = response.body.data;
+            var message_data = response.body;
             return exits.success(message_data);
           });
   }
