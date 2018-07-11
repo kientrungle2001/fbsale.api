@@ -16,5 +16,16 @@ module.exports.seeds = {
 		username: 'kientrungle2001',
 		status: 1
 	}
+	],
+	coreroles: [
+	{
+		name: 'Administrator'
+	},
+	{
+		name: 'Sale'
+	},
+	{
+		name: 'Manager'
+	}
 	]
 }
