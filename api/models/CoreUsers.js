@@ -53,10 +53,11 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+	/*
     role_id: {
         type: 'number',
         columnType: 'int'
-    },
+    },*/
     status: {
         type: 'number',
         columnType: 'tinyint'

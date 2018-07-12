@@ -35,7 +35,7 @@ module.exports = {
     },
     time: {
       type: 'ref',
-      defaultsTo: '1531319861',
+      defaultsTo: '0',
       example: 'tomorrow',
       description: 'Thời gian đăng bài',
       
@@ -51,7 +51,7 @@ module.exports = {
     // cài đặt các tham số: published= false ; scheduled_publish_time = time;
     
     // Nếu đăng luôn không cần đặt lịch
-    if(!inputs.time){
+    if(inputs.time <= 0){
       var page_url=  'https://graph.facebook.com/v3.0/'+inputs.pageId+'/feed?message='+ inputs.content+'&access_token='+inputs.token;
       var post_options = {method: 'POST', url: page_url, json: true};
       request(post_options, function (err, response) {
