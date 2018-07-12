@@ -6,6 +6,11 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+    status: {
+        type: 'number',
+        columnType: 'tinyint'
+        
+    },
     // Khai bao kết nối tới model CoreUsers
     ref_user: {
     	collection: 'CoreUsers',

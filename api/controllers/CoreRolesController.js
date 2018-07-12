@@ -8,14 +8,11 @@ module.exports = {
 		var keywork = req.body.search.value;
 		where.or = [{name : {like: '%'+keywork+'%'}}, {username: {like: '%'+keywork+'%'}}, {email: {like: '%'+keywork+'%'}}];
 		var sort = columns[order.column].data + ' ' + order.dir;
-		var data = await CoreUsers.find({where: where, limit: limit, skip: skip, sort: sort}).populate('role_id');
-		var recordsTotal = await CoreUsers.count({where: where});
+		var data = await CoreRoles.find({where: where, limit: limit, skip: skip, sort: sort}).populate('role_id');
+		var recordsTotal = await CoreRoles.count({where: where});
 		var result = {data: data, recordsTotal: recordsTotal, recordsFiltered: recordsTotal};
 		res.json(result);
 	},
-	roles: async function(req, res) {
-		var roles = await CoreRoles.find({});
-		res.json(roles);
-	}
+	
 	
 };
