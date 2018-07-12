@@ -10,6 +10,10 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+    status: {
+        type: 'number',
+        columnType: 'tinyint'
+    },
     // Khai bao tham chieu toi model SocialPostLabels
     ref_postlabels: {
       collection: 'SocialPostLabels',
