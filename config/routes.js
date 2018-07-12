@@ -47,6 +47,10 @@ module.exports.routes = {
   'POST /coreusers/datatable':{
     action: 'CoreUsers/datatable'
   },
+  
+  'POST /coreroles/datatable':{
+    action: 'CoreRoles/datatable'
+  },
   'GET /coreusers/roles':{
     action: 'CoreUsers/roles'
   },
