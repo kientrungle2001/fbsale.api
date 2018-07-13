@@ -69,12 +69,14 @@ module.exports = {
             res.json(messages);*/
 
             // Post message : trả lời tin nhắn
-            /*var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token, content:'Chào bạn!'  });
+            /*var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: 'hehehe'  });
             res.json(messages);*/
+            var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: 'hehehe'  });
+            res.json(messages);
 
             // Post bài viết: theo lịch đặt sẵn
-            var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Ngày mới tốt lành!'});
-            res.json(messages);
+            /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Ngày mới tốt lành!'});
+            res.json(messages);*/
 
           } 
           

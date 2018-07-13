@@ -1,15 +1,15 @@
 module.exports = {
 	testApi: async function(req, res){
 		// Test connect API of SocialPostLabels model with CoreLabels model
-		/*await SocialPostLabels.create({
-		  post_id: '1',
+		await SocialPostLabels.create({
+		  post_id: '3',
 		  label_id: 1
 		});
 		
-		var post = await SocialPostLabels.find().populate('label_id');*/
+		//var post = await SocialPostLabels.find().populate('label_id');
 		
-		// Test connect API of SocialPosts model with SocialPages model
-		/*await SocialPages.create({
+		/*Test connect API of SocialPosts model with SocialPages model
+		await SocialPages.create({
 		  page_id: '1',
 		  facebook_id: '1',
 		  name: 'Luyện thi vào lớp 6 Trần Đại Nghĩa',
@@ -28,7 +28,8 @@ module.exports = {
 		// Test connect API of CoreUsers model with CoreRoles model 
 		/*await CoreRoles.create({
 		  //name: 'Admin'
-		  name: 'Editor'		  
+		  name: 'Editor',
+		  status: 1		  
 		});*/
 		/*await CoreUsers.create({
 		  

@@ -8,8 +8,7 @@ module.exports = {
     },
     status: {
         type: 'number',
-        columnType: 'tinyint'
-        
+        columnType: 'tinyint'        
     },
     // Khai bao kết nối tới model CoreUsers
     ref_user: {
