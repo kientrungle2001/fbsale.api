@@ -17,6 +17,10 @@ module.exports = {
     action: {
         type: 'string',
         columnType: 'varchar'
+    },
+    status: {
+        type: 'number',
+        columnType: 'tinyint'
     }
   }
 };
