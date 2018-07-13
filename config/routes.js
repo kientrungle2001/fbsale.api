@@ -59,10 +59,13 @@ module.exports.routes = {
     action: 'CoreMenus/datatable'
   },
    'POST /coresettings/datatable':{
-    action: 'coreSettings/datatable'
+    action: 'CoreSettings/datatable'
   },
   'POST /corerolepermissions/datatable':{
-    action: 'coreRolePermissions/datatable'
+    action: 'CoreRolePermissions/datatable'
+  },
+  'GET /corerolepermissions/roles':{
+    action: 'CoreRolePermissions/roles'
   },
   'POST /coreroles/datatable':{
     action: 'CoreRoles/datatable'
