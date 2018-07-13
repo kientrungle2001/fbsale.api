@@ -17,7 +17,10 @@ module.exports = {
         type: 'number',
         columnType: 'int'
     },
-    
+    status: {
+        type: 'number',
+        columnType: 'int'
+    },
 
   }
 };
