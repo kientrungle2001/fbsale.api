@@ -68,16 +68,19 @@ module.exports = {
             /*var messages = await sails.helpers.fbGetMessages.with({ pageId:'2125248527733637', token: page_access_token });
             res.json(messages);*/
 
+            // Reply message :Trả lời tin nhắn
+            /*var messages = await sails.helpers.fbReplyMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: "Bạn có yêu thơ?"  });
+            res.json(messages);*/
             // Post message : Nhắn tin
-            /*var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: 'hehehe'  });
-            res.json(messages);*/
-            var messages = await sails.helpers.fbPostMessages.with({ recipient:'2093115144032161', token: page_access_token,type:'image', content: 'http://nextnobels.com/default/skin/nobel/themes/story/media/logo.png'  });
-            res.json(messages);
-
-            // Post bài viết: theo lịch đặt sẵn
-            /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Ngày mới tốt lành!'});
+            /*var messages = await sails.helpers.fbPostMessages.with({ recipient:'2093115144032161', token: page_access_token,type:'image', content: 'http://nextnobels.com/default/skin/nobel/themes/story/media/logo.png'  });
             res.json(messages);*/
 
+            // Post bài viết: theo lịch đặt sẵn có kèm ảnh
+            /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Ngày mới tốt lành!', type:'image', time: 0, url: 'http://nextnobels.com/default/skin/nobel/themes/story/media/logo.png'});
+            res.json(messages);*/
+            // Post bài có kèm video: https://www.youtube.com/watch?v=HkuKHwetV6Q
+            /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Vide is good!', type:'video', time: 0, url: 'https://www.youtube.com/watch?v=HkuKHwetV6Q'});
+            res.json(messages);*/
           } 
           
         }
