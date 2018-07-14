@@ -68,10 +68,10 @@ module.exports = {
             /*var messages = await sails.helpers.fbGetMessages.with({ pageId:'2125248527733637', token: page_access_token });
             res.json(messages);*/
 
-            // Post message : trả lời tin nhắn
+            // Post message : Nhắn tin
             /*var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: 'hehehe'  });
             res.json(messages);*/
-            var messages = await sails.helpers.fbPostMessages.with({ messageId:'t_100001917775117', token: page_access_token,type:'text', content: 'hehehe'  });
+            var messages = await sails.helpers.fbPostMessages.with({ recipient:'2093115144032161', token: page_access_token,type:'image', content: 'http://nextnobels.com/default/skin/nobel/themes/story/media/logo.png'  });
             res.json(messages);
 
             // Post bài viết: theo lịch đặt sẵn

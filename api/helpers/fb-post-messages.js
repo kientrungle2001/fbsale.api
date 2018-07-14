@@ -5,14 +5,14 @@ module.exports = {
   friendlyName: 'fb Post Messages',
 
 
-  description: 'Trả lời tin nhắn của khách hàng',
+  description: 'Nhắn tin cho khách hàng',
 
 
   inputs: {    
-    messageId: {
+    recipient: {
       type: 'string',
-      example: 'message_id',
-      description: 'id tin nhắn',
+      example: 'recipient Id',
+      description: 'id người nhận',
       required: true
     },
     token: {
@@ -38,53 +38,110 @@ module.exports = {
 
 // Link test (method: POST): /t_100001917775117/messages?message=Me too
   fn: async function (inputs, exits) {
-    // Trả lời các tin nhắn. kết quả hàm trả về id của tin nhắn vừa post
+    // Trả lời các tin nhắn. kết quả hàm trả về id của tin nhắn vừa post 2093115144032161
     //https://developers.facebook.com/docs/messenger-platform/send-messages
     //https://developers.facebook.com/docs/messenger-platform/reference/send-api/
-          /*if(inputs.type =='image'){
+          if(inputs.type =='image'){
               var data_post = {
-              "recipient":{
-                "id":"2093115144032161"
-              },
-              "message":{
+              "recipient":JSON.stringify({
+                "id":inputs.recipient
+              }),
+              "message":JSON.stringify({
                 "attachment":{
                   "type":"image", 
                   "payload":{
-                    "url":"http://www.messenger-rocks.com/image.jpg", 
+                    "url": inputs.content, 
                     "is_reusable":true
                   }
                 }
-              }
+              })
             }
           }else if(inputs.type =='text'){
               var data_post = {
-                "recipient":{
-                  "id":"2093115144032161"
-                },
-                "message":{
-                  "message":{
-                    "text":"hello world!"
-                   
-                    }
-                }
+                "recipient":JSON.stringify({
+                  "id":inputs.recipient
+                }),
+                "message":JSON.stringify({                  
+                    "text":inputs.content            
+                })
               }
-            }*/
+          }else if(inputs.type =='audio'){
+              var data_post = {
+              "recipient":JSON.stringify({
+                "id":inputs.recipient
+              }),
+              "message":JSON.stringify({
+                "attachment":{
+                  "type":"audio", 
+                  "payload":{
+                    "url": inputs.content, 
+                    "is_reusable":true
+                  }
+                }
+              })
+            }
+          }else if(inputs.type =='video'){
+              var data_post = {
+              "recipient":JSON.stringify({
+                "id":inputs.recipient
+              }),
+              "message":JSON.stringify({
+                "attachment":{
+                  "type":"video", 
+                  "payload":{
+                    "url": inputs.content, 
+                    "is_reusable":true
+                  }
+                }
+              })
+            }
+          }else if(inputs.type =='file'){
+              var data_post = {
+              "recipient":JSON.stringify({
+                "id":inputs.recipient
+              }),
+              "message":JSON.stringify({
+                "attachment":{
+                  "type":"file", 
+                  "payload":{
+                    "url": inputs.content, 
+                    "is_reusable":true
+                  }
+                }
+              })
+            }
+          }else if(inputs.type =='template'){
+              var data_post = {
+              "recipient":JSON.stringify({
+                "id":inputs.recipient
+              }),
+              "message":JSON.stringify({
+                "attachment":{
+                  "type":"template", 
+                  "payload":{
+                    "url": inputs.content, 
+                    "is_reusable":true
+                  }
+                }
+              })
+            }
+          }
 
           
            //var page_url=  'https://graph.facebook.com/v3.0/'+inputs.messageId+'/messages?access_token='+inputs.token+'&message='+inputs.content;
-           var data_post = {
-                "messaging_type": "RESPONSE",
+           /*var data_post = {
+                "messaging_type": "UPDATE",
                 "recipient": JSON.stringify({
                   "id":"2093115144032161"
                 }),
                 "message":JSON.stringify({
                   
-                    "text":"hello world!"
+                    "text":inputs.content
       
                 })
-              };
+              };*/
            var page_url=  'https://graph.facebook.com/v3.0/me/messages?access_token='+inputs.token;
-           var page_options = {method: 'POST', url: page_url,data: data_post, json: true};
+           var page_options = {method: 'POST', url: page_url, json: data_post};
            request(page_options, function (err, response) {
             if (err) {
               //return 'null';
@@ -92,7 +149,7 @@ module.exports = {
             }
 
             var message_data = response.body;
-            return exits.success(page_options);
+            return exits.success(message_data);
           });
   }
 
