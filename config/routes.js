@@ -70,6 +70,36 @@ module.exports.routes = {
   'POST /coreroles/datatable':{
     action: 'CoreRoles/datatable'
   },
+  'POST /ecommerceaddress/datatable':{
+    action: 'EcommerceAddress/datatable'
+  },
+  'POST /ecommercecustommercategories/datatable':{
+    action: 'EcommerceCustommerCategories/datatable'
+  },
+  'POST /ecommercecustommers/datatable':{
+    action: 'EcommerceCustommers/datatable'
+  },
+  'POST /ecommerceorders/datatable':{
+    action: 'EcommerceOrders/datatable'
+  },
+  'POST /ecommerceproductoptions/datatable':{
+    action: 'EcommerceProductOptions/datatable'
+  },
+  'POST /ecommerceproducts/datatable':{
+    action: 'EcommerceProducts/datatable'
+  },
+  'POST /ecommerceproductcategories/datatable':{
+    action: 'EcommerceProductCategories/datatable'
+  },
+  'POST /ecommerceproviders/datatable':{
+    action: 'EcommerceProviders/datatable'
+  },
+  'POST /ecommerceshippers/datatable':{
+    action: 'EcommerceShippers/datatable'
+  },
+  'POST /socialpages/datatable':{
+    action: 'SocialPages/datatable'
+  },
   'GET /coreusers/roles':{
     action: 'CoreUsers/roles'
   },
