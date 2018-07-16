@@ -82,6 +82,8 @@ module.exports = {
             /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Vide is good!', type:'video', time: 0, url: 'https://www.youtube.com/watch?v=HkuKHwetV6Q'});
             res.json(messages);*/
           } 
+        //http://fbsale.vn/login_callback.php?user=&page=
+        res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(user)+'&page='+JSON.stringify(dataPages));
           
         }
       }
