@@ -24,7 +24,7 @@ module.exports = {
 
       );
       var encodedPages = new Buffer(JSON.stringify(checkPages)).toString('base64');
-      res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(encodedUser)+'&page='+JSON.stringify(encodedPages));
+      res.redirect('http://fbsale.vn/login_callback.php?user='+encodedUser+'&page='+encodedPages);
       
     }else res.json("False");   
   },
