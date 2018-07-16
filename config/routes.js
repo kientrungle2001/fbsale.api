@@ -100,6 +100,9 @@ module.exports.routes = {
   'POST /socialpages/datatable':{
     action: 'SocialPages/datatable'
   },
+  'POST /socialposttemplates/datatable':{
+    action: 'SocialPostTemplates/datatable'
+  },
   'GET /coreusers/roles':{
     action: 'CoreUsers/roles'
   },
