@@ -2,8 +2,8 @@ var passport = require('passport'),
     request = require('request');
 module.exports = {
   userLogin: async function (req, res) {
-    var txtUsername= req.body.txtUsername;
-    var txtPassword= req.body.txtPassword;
+    var txtUsername= req.body.username;
+    var txtPassword= req.body.password;
     var crypto = require('crypto');
 
     var txtPassword = crypto.createHash('md5').update(txtPassword).digest('hex');
