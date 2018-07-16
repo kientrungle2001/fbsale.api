@@ -79,9 +79,10 @@ module.exports = {
           if(!userRow){
             var createUser = await CoreUsers.create({'name': name , 'username': facebook_id, 'email': email, 'facebook_id': facebook_id, 'facebook_token': facebook_token, 'gender': gender, 'status': 1}).fetch();
             return createUser;
+            
           }
         return userRow;
   },
-  
+
 };
 

@@ -57,10 +57,21 @@ module.exports = {
         var dataPages = await sails.helpers.fbGetPages.with({ token:user.token });        
         //res.json(dataPages);
         // Hiển thị danh sách pages
-          if(dataPages){                       
-            pageId1=  dataPages[0]['id'];
+          if(dataPages){
+            // Insert pages in to social_pages
+            dataPages.forEach(async function(page) {
+              var findPage =  await SocialPages.findOne({
+                  facebook_id: row['facebook_id'] ,
+                  page_id: page['id']
+                });
+              if(!findPage){
+                var createPage =  await SocialPages.create({'name': page['name'] , 'facebook_id': row['facebook_id'], 'page_id': page['id'], 'user_id': row['id'], 'status': 1}).fetch();
+              }
+              
+            });                       
+            /*pageId1=  dataPages[0]['id'];
             pageName1= dataPages[0]['name'];
-            page_access_token= dataPages[0]['access_token'];
+            page_access_token= dataPages[0]['access_token'];*/
             //console.log(page_access_token);
             // Get các bài viết từ Page
             /*var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
