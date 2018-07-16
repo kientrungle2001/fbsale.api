@@ -65,7 +65,7 @@ module.exports = {
                   page_id: page['id']
                 });
               if(!findPage){
-                var createPage =  await SocialPages.create({'name': page['name'] , 'facebook_id': row['facebook_id'], 'page_id': page['id'], 'user_id': row['id'], 'status': 1}).fetch();
+                var createPage =  await SocialPages.create({'name': page['name'] , 'facebook_id': row['facebook_id'], 'page_id': page['id'], 'page_token': page['access_token'], 'user_id': row['id'], 'status': 1}).fetch();
               }
               
             });                       

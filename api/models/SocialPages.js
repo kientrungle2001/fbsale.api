@@ -17,6 +17,10 @@ module.exports = {
     page_id: {
         type: 'string',
         columnType: 'varchar'
+    }, 
+    page_token: {
+        type: 'string',
+        columnType: 'varchar'
     },    
     status: {
         type: 'number',
