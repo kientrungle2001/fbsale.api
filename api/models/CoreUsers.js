@@ -81,6 +81,7 @@ module.exports = {
             return createUser;
           }
         return userRow;
-    }
+  },
+  
 };
 

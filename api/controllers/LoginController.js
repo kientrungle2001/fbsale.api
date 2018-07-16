@@ -2,16 +2,29 @@ var passport = require('passport'),
     request = require('request');
 module.exports = {
   userLogin: async function (req, res) {
-    var txtEmail= req.body.txtEmail;
+    var txtUsername= req.body.txtUsername;
     var txtPassword= req.body.txtPassword;
+    var crypto = require('crypto');
+
+    var txtPassword = crypto.createHash('md5').update(txtPassword).digest('hex');
     //res.json(txtPassword);
-  	var checkLogin = await CoreUsers.find(
+  	var checkLogin = await CoreUsers.findOne(
       {
-        email: txtEmail, password: txtPassword
+        username: txtUsername, password: txtPassword
       }
     );
+
     if(checkLogin) {
-      res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(user)+'&page='+JSON.stringify(dataPages));
+      var encodedUser = new Buffer(JSON.stringify(checkLogin)).toString('base64');
+      // tìm kiếm các page mà user quản lý
+      var checkPages = await SocialPages.find(
+        {
+          user_id: checkLogin['id']
+        }
+
+      );
+      var encodedPages = new Buffer(JSON.stringify(checkPages)).toString('base64');
+      res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(encodedUser)+'&page='+JSON.stringify(encodedPages));
       
     }else res.json("False");   
   },

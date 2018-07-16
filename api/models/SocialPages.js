@@ -10,11 +10,14 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
+    user_id: {
+        type: 'number',
+        columnType: 'int'
+    },
     page_id: {
         type: 'string',
         columnType: 'varchar'
-    },
-    
+    },    
     status: {
         type: 'number',
         columnType: 'tinyint'
