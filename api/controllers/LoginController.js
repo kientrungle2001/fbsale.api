@@ -108,8 +108,9 @@ module.exports = {
             res.json(messages);*/
           } 
         //http://fbsale.vn/login_callback.php?user=&page=
-        var encodedUser = new Buffer(JSON.stringify(user)).toString('base64');
-        var encodedDataPages = new Buffer(JSON.stringify(dataPages)).toString('base64');
+        var encodedUser = new Buffer(JSON.stringify(row)).toString('base64');
+        var getPages =  await SocialPages.find({user_id: row['id']});
+        var encodedDataPages = new Buffer(JSON.stringify(getPages)).toString('base64');
         res.redirect('http://fbsale.vn/login_callback.php?user='+encodedUser+'&page='+encodedDataPages);
           
         }
