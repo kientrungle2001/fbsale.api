@@ -11,7 +11,8 @@ module.exports = {
       }
     );
     if(checkLogin) {
-      res.json("True");
+      res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(user)+'&page='+JSON.stringify(dataPages));
+      
     }else res.json("False");   
   },
   loginFacebook:  function(req, res, next) {
@@ -83,7 +84,9 @@ module.exports = {
             res.json(messages);*/
           } 
         //http://fbsale.vn/login_callback.php?user=&page=
-        res.redirect('http://fbsale.vn/login_callback.php?user='+JSON.stringify(user)+'&page='+JSON.stringify(dataPages));
+        var encodedUser = new Buffer(JSON.stringify(user)).toString('base64');
+        var encodedDataPages = new Buffer(JSON.stringify(dataPages)).toString('base64');
+        res.redirect('http://fbsale.vn/login_callback.php?user='+encodedUser+'&page='+encodedDataPages);
           
         }
       }
