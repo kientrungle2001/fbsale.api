@@ -13,6 +13,13 @@ module.exports = {
 		var result = {data: data, recordsTotal: recordsTotal, recordsFiltered: recordsTotal};
 		res.json(result);
 	},
-	
+	shippers: async function(req, res){
+		var shippers = await EcommerceShippers.find({});
+		res.json(shippers);
+	},
+	custommers: async function(req, res){
+		var custommers = await EcommerceCustommers.find({});
+		res.json(custommers);
+	}
 	
 };

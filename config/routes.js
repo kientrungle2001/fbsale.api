@@ -82,6 +82,21 @@ module.exports.routes = {
   'POST /ecommerceorders/datatable':{
     action: 'EcommerceOrders/datatable'
   },
+  'GET /ecommerceorders/shippers':{
+    action: 'EcommerceOrders/shippers'
+  },
+  'GET /ecommerceorders/custommers':{
+    action: 'EcommerceOrders/custommers'
+  },
+  'POST /ecommerceorderitems/datatable':{
+    action: 'EcommerceOrderItems/datatable'
+  },
+  'GET /ecommerceorderitems/products':{
+    action: 'EcommerceOrderItems/products'
+  },
+  'GET /ecommerceorderitems/orders':{
+    action: 'EcommerceOrderItems/orders'
+  },
   'POST /ecommerceproductoptions/datatable':{
     action: 'EcommerceProductOptions/datatable'
   },
