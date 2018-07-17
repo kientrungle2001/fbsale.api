@@ -8,11 +8,14 @@ module.exports = {
 		var keywork = req.body.search.value;
 		where.or = [{name : {like: '%'+keywork+'%'}}];
 		var sort = columns[order.column].data + ' ' + order.dir;
-		var data = await EcommerceProductOptions.find({where: where, limit: limit, skip: skip, sort: sort});
+		var data = await EcommerceProductOptions.find({where: where, limit: limit, skip: skip, sort: sort}).populate('product_id');
 		var recordsTotal = await EcommerceProductOptions.count({where: where});
 		var result = {data: data, recordsTotal: recordsTotal, recordsFiltered: recordsTotal};
 		res.json(result);
 	},
-	
+	products: async function(req, res){
+		var products = await EcommerceProducts.find({});
+		res.json(products);
+	}
 	
 };
