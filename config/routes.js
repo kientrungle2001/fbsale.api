@@ -112,6 +112,9 @@ module.exports.routes = {
   'POST /socialposts/cron':{
     action: 'SocialPosts/cron'
   },
+  'POST /socialposts/cron2':{
+    action: 'SocialPosts/cron2'
+  },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

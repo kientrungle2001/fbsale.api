@@ -77,5 +77,20 @@ module.exports = {
 			}
 		}
 		res.json(posts_of_pages);
+	},
+	cron2: async function(req, res) {
+		var page_ids = req.body.page_ids;
+		var facebook_id = req.body.facebook_id;
+		var facebook_page_ids = req.body.facebook_page_ids;
+		var facebook_page_tokens = req.body.facebook_page_tokens;
+		var posts_of_pages = [];
+		for(var i = 0; i < facebook_page_ids.length; i++) {
+			var page_id = page_ids[i];
+			var facebook_page_id = facebook_page_ids[i];
+			var page_token = facebook_page_tokens[i];
+			var posts = await sails.helpers.fbGetFeedPosts.with({ pageId:facebook_page_id, token: page_token });
+			posts_of_pages.push(posts);
+		}
+		res.json(posts_of_pages);
 	}
 };
