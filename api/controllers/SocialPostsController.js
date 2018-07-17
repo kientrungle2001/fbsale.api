@@ -26,7 +26,7 @@ module.exports = {
 					facebook_user_name: post.from ? post.from.name: '',
 					facebook_user_avatar: post.from ? post.from.picture.data.url: '',
 					image: post.full_picture?post.full_picture: '',
-					facebook_post_parent_id: facebook_page_id,
+					facebook_parent_post_id: facebook_page_id,
 					createdAt: post.created_time,
 					updatedAt: post.updated_time
 				});
@@ -45,7 +45,7 @@ module.exports = {
 						facebook_user_name: comment.from ? comment.from.name: '',
 						facebook_user_avatar: comment.from ? (comment.from.picture ? comment.from.picture.data.url: '') : '',
 						image: comment.full_picture?comment.full_picture: '',
-						facebook_post_parent_id: post.id,
+						facebook_parent_post_id: post.id,
 						createdAt: comment.created_time,
 						updatedAt: comment.updated_time,
 						parent_id: postRecord.id
@@ -65,7 +65,7 @@ module.exports = {
 							facebook_user_name: subComment.from ? subComment.from.name: '',
 							facebook_user_avatar: subComment.from ? (subComment.from.picture ? subComment.from.picture.data.url: '') : '',
 							image: subComment.full_picture?subComment.full_picture: '',
-							facebook_post_parent_id: comment.id,
+							facebook_parent_post_id: comment.id,
 							createdAt: subComment.created_time,
 							updatedAt: subComment.updated_time,
 							parent_id: commentRecord.id
