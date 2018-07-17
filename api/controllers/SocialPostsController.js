@@ -43,7 +43,7 @@ module.exports = {
 						content: comment.message,
 						facebook_user_id: comment.from? comment.from.id: '',
 						facebook_user_name: comment.from ? comment.from.name: '',
-						facebook_user_avatar: comment.from ? comment.from.picture.data.url: '',
+						facebook_user_avatar: comment.from ? (comment.from.picture ? comment.from.picture.data.url: '') : '',
 						image: comment.full_picture?comment.full_picture: '',
 						facebook_post_parent_id: post.id,
 						createdAt: comment.created_time,
