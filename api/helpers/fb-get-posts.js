@@ -26,7 +26,7 @@ module.exports = {
   // Link test ( method: GET): /2125248527733637/feed
   fn: async function (inputs, exits) {
     // Lấy danh sách các bài viết của page
-           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.pageId+'/feed?fields=id,message,full_picture,from{id,name,picture{url}}&access_token='+inputs.token;
+           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.pageId+'/feed?fields=id,message,full_picture,from{id,name,picture{url}},created_time,updated_time&access_token='+inputs.token;
            var page_options = {method: 'GET', url: page_url, json: true};
            request(page_options, function (err, response) {
            

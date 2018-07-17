@@ -22,8 +22,10 @@ module.exports = {
 					facebook_user_id: post.from? post.from.id: '',
 					facebook_user_name: post.from ? post.from.name: '',
 					facebook_user_avatar: post.from ? post.from.picture.data.url: '',
-					picture: post.full_picture?post.full_picture: '',
-					facebook_post_parent_id: page_id
+					image: post.full_picture?post.full_picture: '',
+					facebook_post_parent_id: page_id,
+					createdAt: post.created_time,
+					updatedAt: post.updated_time
 				});
 				var comments = await sails.helpers.fbGetComments.with({ postId:post.id, token: page_token });
 				for (var k = 0; k < comments.length; k++) {
