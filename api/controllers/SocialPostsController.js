@@ -33,6 +33,23 @@ module.exports = {
 				var comments = await sails.helpers.fbGetComments.with({ postId:post.id, token: page_token });
 				for (var k = 0; k < comments.length; k++) {
 					var comment = comments[k];
+					var commentRecord = await SocialPosts.findOrCreate({
+						facebook_post_id: comment.id
+					}, {
+						page_id: page_id,
+						facebook_post_id: comment.id,
+						facebook_id: facebook_id,
+						type: 'comment',
+						content: comment.message,
+						facebook_user_id: comment.from? comment.from.id: '',
+						facebook_user_name: comment.from ? comment.from.name: '',
+						facebook_user_avatar: comment.from ? comment.from.picture.data.url: '',
+						image: comment.full_picture?comment.full_picture: '',
+						facebook_post_parent_id: post.id,
+						createdAt: comment.created_time,
+						updatedAt: comment.updated_time,
+						parent_id: postRecord.id
+					});
 					var subComments = await sails.helpers.fbGetComments.with({ postId:comment.id, token: page_token });
 					comment.comments = subComments;
 				}
