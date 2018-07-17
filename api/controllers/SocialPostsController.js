@@ -12,6 +12,11 @@ module.exports = {
 			for(var j = 0; j < posts.length; j++) {
 				var post = posts[j];
 				var comments = await sails.helpers.fbGetComments.with({ postId:post.id, token: page_token });
+				for (var k = 0; k < comments.length; k++) {
+					var comment = comments[k];
+					var subComments = await sails.helpers.fbGetComments.with({ postId:comment.id, token: page_token });
+					comment.comments = subComments;
+				}
 				post.comments = comments;
 			}
 		}
