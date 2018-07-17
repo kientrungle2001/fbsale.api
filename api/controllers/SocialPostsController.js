@@ -9,7 +9,7 @@ module.exports = {
 		for(var i = 0; i < facebook_page_ids.length; i++) {
 			var page_id = page_ids[i];
 			var facebook_page_id = facebook_page_ids[i];
-			var page_token = page_tokens[i];
+			var page_token = facebook_page_tokens[i];
 			var posts = await sails.helpers.fbGetPosts.with({ pageId:facebook_page_id, token: page_token });
 			posts_of_pages.push(posts);
 			for(var j = 0; j < posts.length; j++) {
