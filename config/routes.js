@@ -85,6 +85,9 @@ module.exports.routes = {
   'POST /ecommerceproductoptions/datatable':{
     action: 'EcommerceProductOptions/datatable'
   },
+  'GET /ecommerceproductoptions/products':{
+    action: 'EcommerceProductOptions/products'
+  },
   'POST /ecommerceproducts/datatable':{
     action: 'EcommerceProducts/datatable'
   },
