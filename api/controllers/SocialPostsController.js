@@ -9,10 +9,11 @@ module.exports = {
 			var page_token = page_tokens[i];
 			var posts = await sails.helpers.fbGetPosts.with({ pageId:page_id, token: page_token });
 			posts_of_pages.push(posts);
-			posts.forEach(async function(post, index) {
+			for(var j = 0; j < posts.length; j++) {
+				var post = posts[j];
 				var comments = await sails.helpers.fbGetComments.with({ postId:post.id, token: page_token });
 				post.comments = comments;
-			});
+			}
 		}
 		res.json(posts_of_pages);
 	}
