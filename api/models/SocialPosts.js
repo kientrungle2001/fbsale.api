@@ -38,15 +38,23 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
-	facebook_name: {
+	facebook_user_name: {
         type: 'string',
         columnType: 'varchar'
     },
-	facebook_avatar: {
+	facebook_user_avatar: {
         type: 'string',
         columnType: 'varchar'
     },
+	facebook_post_id: {
+		type: 'string',
+        columnType: 'varchar'
+	},
 	
+	facebook_parent_post_id: {
+		type: 'string',
+        columnType: 'varchar'
+	},
 	
      // Khai báo liên kết với model SocialPages
     page_id: {
