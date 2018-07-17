@@ -14,10 +14,40 @@ module.exports = {
         type: 'string',
         columnType: 'varchar'
     },
-    asign_id: {
+    assign_id: {
         type: 'number',
         columnType: 'int'
     },
+	parent_id: {
+        type: 'number',
+        columnType: 'int'
+    },
+	type: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+	content: {
+        type: 'string',
+        columnType: 'text'
+    },
+	image: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+	facebook_user_id: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+	facebook_name: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+	facebook_avatar: {
+        type: 'string',
+        columnType: 'varchar'
+    },
+	
+	
      // Khai báo liên kết với model SocialPages
     page_id: {
         model: 'SocialPages'
