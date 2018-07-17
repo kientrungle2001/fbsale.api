@@ -19,9 +19,9 @@ module.exports = {
 					facebook_id: facebook_id,
 					type: 'post',
 					content: post.message,
-					facebook_user_id: post.from.id,
-					facebook_user_name: post.from.name,
-					facebook_user_avatar: post['from'].picture.data.url,
+					facebook_user_id: post.from? post.from.id: null,
+					facebook_user_name: post.from ? post.from.name: null,
+					facebook_user_avatar: post.from ? post.from.picture.data.url: null,
 					picture: post.full_picture,
 					facebook_post_parent_id: page_id
 				});
