@@ -106,6 +106,9 @@ module.exports.routes = {
   'GET /coreusers/roles':{
     action: 'CoreUsers/roles'
   },
+  'POST /socialposts/cron':{
+    action: 'SocialPosts/cron'
+  },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
