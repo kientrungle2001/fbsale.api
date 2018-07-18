@@ -94,19 +94,22 @@ module.exports = {
 		res.json(posts_of_pages);
 	},
 	// Hieen thi cac comments theo pageId
-	getComments: async function(page_ids){
-		page_ids.forEach(async function(page_id){
+	getComments: async function(req, res){
+		var page_ids = req.body.page_ids;
 			var dataPosts = await SocialPosts.find({
-				where: {'type': 'comment'},
-				sort: 'createdAt DESC'
+				where: {'type': 'comment', 'page_id': {'in': page_ids} },
+				sort: 'createdAt DESC',
+
 			});
-		});
+		res.json(dataPosts);
 	},
 	// Hieen thi cac Sub Comments theo comment_id
-	getSubComments: async function(comment_id){		
+	getSubComments: async function(req, res){	
+		var comment_id = req.body.comment_id;	
 		var dataSubComments = await SocialPosts.find({
-			where: {'type': 'comment', 'facebook_parent_post_id': comment_id},
+			where: {'type': 'comment', 'parent_id': comment_id},
 			sort: 'createdAt DESC'
-		});		
+		});	
+		res.json(dataSubComments);	
 	}
 };
