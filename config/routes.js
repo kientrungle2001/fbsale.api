@@ -139,7 +139,6 @@ module.exports.routes = {
   'POST /socialposts/getSubComments':{
     action: 'SocialPosts/getSubComments'
   },
-  x
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
