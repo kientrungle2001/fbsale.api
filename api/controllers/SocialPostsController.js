@@ -107,7 +107,7 @@ module.exports = {
 	getSubComments: async function(req, res){	
 		var comment_id = req.body.comment_id;	
 		var dataSubComments = await SocialPosts.find({
-			where: {'type': 'comment', 'parent_id': comment_id},
+			where: {'type': 'subcomment', 'parent_id': comment_id},
 			sort: 'createdAt DESC'
 		});	
 		res.json(dataSubComments);	
