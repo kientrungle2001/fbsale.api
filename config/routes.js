@@ -82,6 +82,9 @@ module.exports.routes = {
   'POST /ecommerceorders/datatable':{
     action: 'EcommerceOrders/datatable'
   },
+  'POST /ecommerceorders/createorder':{
+    action: 'EcommerceOrders/createorder'
+  },
   'GET /ecommerceorders/shippers':{
     action: 'EcommerceOrders/shippers'
   },
@@ -130,6 +133,7 @@ module.exports.routes = {
   'POST /socialposts/cron2':{
     action: 'SocialPosts/cron2'
   },
+  x
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
