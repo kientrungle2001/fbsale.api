@@ -72,8 +72,6 @@ module.exports = {
             // Đặt lịch đăng
             var page_url=  'https://graph.facebook.com/v3.0/'+inputs.pageId+'/feed?message='+ inputs.content+'&published=false&scheduled_publish_time='+inputs.time+'&access_token='+inputs.token;
             var post_options = {method: 'POST', url: page_url, json: true};
-            
-        
         }
         request(post_options, function (err, response) {
             if (err) {
