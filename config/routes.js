@@ -88,6 +88,12 @@ module.exports.routes = {
   'GET /ecommerceorders/shippers':{
     action: 'EcommerceOrders/shippers'
   },
+  'GET /ecommerceorders/products':{
+    action: 'EcommerceOrders/products'
+  },
+  'GET /ecommerceorders/optionbyproduct':{
+    action: 'EcommerceOrders/optionbyproduct'
+  },
   'GET /ecommerceorders/custommers':{
     action: 'EcommerceOrders/custommers'
   },
