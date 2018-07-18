@@ -17,6 +17,15 @@ module.exports = {
 		var shippers = await EcommerceShippers.find({});
 		res.json(shippers);
 	},
+	products: async function(req, res){
+		var products = await EcommerceProducts.find({});
+		res.json(products);
+	},
+	optionbyproduct: async function(req, res){
+		var product_id = req.body.product_id;
+		var optionbyproduct = await EcommerceProductOptions.find({'product_id': product_id});
+		res.json(optionbyproduct);
+	},
 	custommers: async function(req, res){
 		var custommers = await EcommerceCustommers.find({});
 		res.json(custommers);
