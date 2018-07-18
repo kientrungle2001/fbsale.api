@@ -133,6 +133,12 @@ module.exports.routes = {
   'POST /socialposts/cron2':{
     action: 'SocialPosts/cron2'
   },
+  'POST /socialposts/getComments':{
+    action: 'SocialPosts/getComments'
+  },
+  'POST /socialposts/getSubComments':{
+    action: 'SocialPosts/getSubComments'
+  },
   x
   /***************************************************************************
   *                                                                          *
