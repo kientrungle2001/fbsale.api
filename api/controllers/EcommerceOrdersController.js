@@ -69,9 +69,6 @@ module.exports = {
 
 
 	},
-	// Edit order
-	editorder: async function(req, res){
-		var oder_id = req.body.id;
-		//
-	}
+	
+
 };
