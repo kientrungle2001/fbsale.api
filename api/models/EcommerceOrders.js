@@ -42,8 +42,8 @@ module.exports = {
         columnType: 'float'
     },
     payment_date: {
-        type: 'number',
-        columnType: 'date'
+        type: 'string',
+        columnType: 'datetime'
     },
     discount: {
         type: 'number',
