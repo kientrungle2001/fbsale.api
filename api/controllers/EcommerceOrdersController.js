@@ -70,7 +70,7 @@ module.exports = {
 
 		}).fetch();
 		// insert bang order_items
-		order_items= req.body.order_items;
+		var order_items= req.body.order_items;
 		order_items.forEach(async function(order_item){
 				await EcommerceOrderItems.create({
 				'order_id': createOrder['id'],
@@ -123,7 +123,7 @@ module.exports = {
 
 		});	
 		//update order_items
-		order_items= req.body.order_items;
+		var order_items= req.body.order_items;
 		order_items.forEach(async function(order_item){
 		await EcommerceOrderItems.create({
 		'order_id': order_id,
@@ -137,6 +137,14 @@ module.exports = {
 
 			});
 		});
+	},
+	// delete order
+	deleteorder: async function(req, res){
+		var order_id = req.body.order_id;
+		//delete order_items
+		await EcommerceOrderItems.distroy({'order_id': order_id});
+		//delete orders
+		await EcommerceOrders.distroy({'id': order_id});
 	}
 
 };
