@@ -53,7 +53,7 @@ module.exports = {
 		var state = req.body.state;
 		var status = req.body.status;
 		var payment_date = req.body.payment_date;
-		var createOrder = await EcommerceOrders.createOne({
+		var createOrder = await EcommerceOrders.create({
 			'custommer_name':custommer_name,
 			'custommer_phone':custommer_phone,
 			'custommer_address':custommer_address,
