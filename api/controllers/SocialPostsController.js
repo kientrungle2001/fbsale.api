@@ -111,5 +111,15 @@ module.exports = {
 			sort: 'createdAt ASC'
 		});	
 		res.json(dataSubComments);	
+	},
+	// reply comment
+	postComment: async function(req, res){
+		var user_id= req.body.user_id;
+		var facebook_id= req.body.facebook_id;
+		var facebook_post_id= req.body.facebook_post_id;
+		var facebook_page_id= req.body.facebook_page_id;
+		var facebook_page_token= req.body.facebook_page_token;
+		var content= req.body.content;
+		
 	}
 };

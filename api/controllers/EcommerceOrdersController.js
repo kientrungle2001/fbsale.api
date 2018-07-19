@@ -153,6 +153,7 @@ module.exports = {
 		await EcommerceOrderItems.destroy({'order_id': order_id});
 		//delete orders
 		await EcommerceOrders.destroy({'id': order_id});
+		res.json(order_id);
 	},
 	showorder: async function(req, res){
 		var order_id = req.query.id;
