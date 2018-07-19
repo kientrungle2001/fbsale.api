@@ -70,6 +70,7 @@ module.exports = {
 
 		}).fetch();
 		// insert bang order_items
+		order_items= req.body.order_items;
 		order_items.forEach(async function(order_item){
 				await EcommerceOrderItems.create({
 				'order_id': createOrder['id'],
@@ -86,6 +87,56 @@ module.exports = {
 
 
 	},
-	
+	// edit order
+	editorder: async function (req, res){
+		//delete order_items
+		var order_id = req.body.order_id;
+		await EcommerceOrderItems.destroy({'order_id': order_id});
+		// edit bang order
+		var custommer_name = req.body.custommer_name;
+		var custommer_phone = req.body.custommer_phone;
+		var custommer_address = req.body.custommer_address;
+		var total = req.body.total;
+		var discount = req.body.discount;
+		var user_id = req.body.user_id;
+		var custommer_id = req.body.custommer_id;
+		var shipper_id = req.body.shipper_id;
+		var total_before_discount = req.body.total_before_discount;
+		var tax = req.body.tax;
+		var state = req.body.state;
+		var status = req.body.status;
+		var payment_date = req.body.payment_date;
+		var editOrder = await EcommerceOrders.update({'id': order_id}).set({
+			'custommer_name':custommer_name,
+			'custommer_phone':custommer_phone,
+			'custommer_address':custommer_address,
+			'total':total,
+			'discount':discount,
+			'user_id':user_id,
+			'shipper_id':shipper_id,
+			'total_before_discount':total_before_discount,
+			'tax':tax,
+			'state':state,
+			'status':status,
+			'payment_date':payment_date,
+			'custommer_id':custommer_id,
+
+		});	
+		//update order_items
+		order_items= req.body.order_items;
+		order_items.forEach(async function(order_item){
+		await EcommerceOrderItems.create({
+		'order_id': order_id,
+		'product_option_name': order_item['product_option_name'],
+		'product_name': order_item['product_name'],
+		'price': order_item['price'],
+		'product_option_id': order_item['product_option_id'],
+		'quantity': order_item['quantity'],
+		'product_id': order_item['product_id'],
+		'status': order_item['status'],
+
+			});
+		});
+	}
 
 };
