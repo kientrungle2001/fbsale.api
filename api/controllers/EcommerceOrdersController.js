@@ -130,11 +130,9 @@ module.exports = {
 		}).fetch();	
 		//update order_items
 		var order_items= req.body.orderitems;
-		var arr_order_items= []; 
-		var i= 0;
 		if(order_items){
 			order_items.forEach(async function(order_item){
-				arr_order_items[i] = await EcommerceOrderItems.create({
+				var arr_order_items = await EcommerceOrderItems.create({
 					'order_id': order_id,
 					'product_option_name': order_item['product_option_name'],
 					'product_name': order_item['product_name'],
@@ -144,14 +142,9 @@ module.exports = {
 					'product_id': order_item['product_id'],
 					'status': order_item['status'],
 
-				}).fecth();
-				i ++;
+				});
 			});
 		}
-		/*var result_edit_orders = [];*/
-		editOrder.push(arr_order_items); 
-		/*result_edit_orders.push(arr_order_items); */
-		res.json(editOrder);
 	},
 	// delete order
 	deleteorder: async function(req, res){
@@ -160,6 +153,15 @@ module.exports = {
 		await EcommerceOrderItems.distroy({'order_id': order_id});
 		//delete orders
 		await EcommerceOrders.distroy({'id': order_id});
+	},
+	showorder: async function(req, res){
+		var order_id = req.param.order_id;
+		// lay du lieu bang order
+		var order = await EcommerceOrders.findOne({'id': order_id});
+		// Lay du lieu bang order_items
+		var order_items = await EcommerceOrderItems.find({'order_id': order_id});
+		order.push(order_items);
+		res.json(order);
 	}
 
 };
