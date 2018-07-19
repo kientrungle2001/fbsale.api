@@ -1,10 +1,14 @@
 module.exports = {
 	testApi: async function(req, res){
 		// Test connect API of SocialPostLabels model with CoreLabels model
-		await SocialPostLabels.create({
+		res.json(req.query.id);
+		console.log(req.query.id);
+		/*var test= req.body.id;
+		res.json(test);*/
+		/*await SocialPostLabels.create({
 		  post_id: '3',
 		  label_id: 1
-		});
+		});*/
 		
 		//var post = await SocialPostLabels.find().populate('label_id');
 		

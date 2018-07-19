@@ -27,7 +27,7 @@ module.exports.routes = {
   '/': {
     view: 'pages/homepage'
   },
-  '/testApi': {
+  'GET /testApi': {
     action: 'TestAPI/testApi'
   },
 
