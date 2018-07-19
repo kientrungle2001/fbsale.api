@@ -148,10 +148,10 @@ module.exports = {
 				i ++;
 			});
 		}
-		var result_edit_orders = [];
-		result_edit_orders.push(editOrder); 
-		result_edit_orders.push(arr_order_items); 
-		res.json(result_edit_orders);
+		/*var result_edit_orders = [];*/
+		editOrder.push(arr_order_items); 
+		/*result_edit_orders.push(arr_order_items); */
+		res.json(editOrder);
 	},
 	// delete order
 	deleteorder: async function(req, res){
