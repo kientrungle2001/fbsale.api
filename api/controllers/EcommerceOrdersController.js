@@ -21,10 +21,18 @@ module.exports = {
 		var products = await EcommerceProducts.find({});
 		res.json(products);
 	},
-	optionbyproduct: async function(req, res){
+	selectproduct: async function(req, res){
 		var product_id = req.body.product_id;
-		var optionbyproduct = await EcommerceProductOptions.find({'product_id': product_id});
-		res.json(optionbyproduct);
+		var product = await EcommerceProducts.findOne({'id': product_id});
+		var product_options = await EcommerceProductOptions.find({'product_id': product_id});
+		var result = {product_options: product_options, price: product.price}
+		res.json(result);
+	},
+	selectproductoption: async function(req, res){
+		var option_id = req.body.option_id;
+		var product_option = await EcommerceProductOptions.findOne({'id': option_id});
+		
+		res.json(product_option.price);
 	},
 	custommers: async function(req, res){
 		var custommers = await EcommerceCustommers.find({});

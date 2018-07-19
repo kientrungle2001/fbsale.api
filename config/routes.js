@@ -91,8 +91,11 @@ module.exports.routes = {
   'GET /ecommerceorders/products':{
     action: 'EcommerceOrders/products'
   },
-  'POST /ecommerceorders/optionbyproduct':{
-    action: 'EcommerceOrders/optionbyproduct'
+  'POST /ecommerceorders/selectproduct':{
+    action: 'EcommerceOrders/selectproduct'
+  },
+  'POST /ecommerceorders/selectproductoption':{
+    action: 'EcommerceOrders/selectproductoption'
   },
   'GET /ecommerceorders/custommers':{
     action: 'EcommerceOrders/custommers'
