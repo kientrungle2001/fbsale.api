@@ -7,7 +7,7 @@ module.exports = {
         columnType: 'varchar'
     },
     address_id: {
-        type: 'number',
+        type: 'string',
         columnType: 'varchar'
     },
     email: {
