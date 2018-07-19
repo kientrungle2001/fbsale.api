@@ -148,7 +148,7 @@ module.exports = {
 	},
 	// delete order
 	deleteorder: async function(req, res){
-		var order_id = req.body.order_id;
+		var order_id = req.param.order_id;
 		//delete order_items
 		await EcommerceOrderItems.distroy({'order_id': order_id});
 		//delete orders
