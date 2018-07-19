@@ -55,7 +55,10 @@ module.exports = {
 		type: 'string',
         columnType: 'varchar'
 	},
-	
+	read: {
+        type: 'number',
+        columnType: 'tinyint'
+    },
      // Khai báo liên kết với model SocialPages
     page_id: {
         model: 'SocialPages'
