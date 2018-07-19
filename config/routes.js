@@ -28,7 +28,7 @@ module.exports.routes = {
     view: 'pages/homepage'
   },
   'GET /testApi': {
-    action: 'TestAPI/testApi'
+    action: 'EcommerceOrders/deleteorder'
   },
 
   '/login': {
