@@ -99,8 +99,10 @@ module.exports = {
 		var custommer_name = req.body.custommer_name;
 		var custommer_phone = req.body.custommer_phone;
 		var custommer_address = req.body.custommer_address;
+		var custommer_email = req.body.custommer_email;
 		var total = req.body.total;
 		var discount = req.body.discount;
+		var total_before_tax = req.body.total_before_tax;
 		var user_id = req.body.user_id;
 		var custommer_id = req.body.custommer_id;
 		var shipper_id = req.body.shipper_id;
@@ -113,7 +115,9 @@ module.exports = {
 			'custommer_name':custommer_name,
 			'custommer_phone':custommer_phone,
 			'custommer_address':custommer_address,
+			'custommer_email':custommer_email,
 			'total':total,
+			'total_before_tax':total_before_tax,
 			'discount':discount,
 			'user_id':user_id,
 			'shipper_id':shipper_id,
@@ -121,25 +125,33 @@ module.exports = {
 			'tax':tax,
 			'state':state,
 			'status':status,
-			'payment_date':payment_date,
 			'custommer_id':custommer_id,
 
-		});	
+		}).fetch();	
 		//update order_items
-		var order_items= req.body.order_items;
-		order_items.forEach(async function(order_item){
-		await EcommerceOrderItems.create({
-		'order_id': order_id,
-		'product_option_name': order_item['product_option_name'],
-		'product_name': order_item['product_name'],
-		'price': order_item['price'],
-		'product_option_id': order_item['product_option_id'],
-		'quantity': order_item['quantity'],
-		'product_id': order_item['product_id'],
-		'status': order_item['status'],
+		var order_items= req.body.orderitems;
+		var arr_order_items= []; 
+		var i= 0;
+		if(order_items){
+			order_items.forEach(async function(order_item){
+				arr_order_items[i] = await EcommerceOrderItems.create({
+					'order_id': order_id,
+					'product_option_name': order_item['product_option_name'],
+					'product_name': order_item['product_name'],
+					'price': order_item['price'],
+					'product_option_id': order_item['product_option_id'],
+					'quantity': order_item['quantity'],
+					'product_id': order_item['product_id'],
+					'status': order_item['status'],
 
+				}).fecth();
+				i ++;
 			});
-		});
+		}
+		var result_edit_orders = [];
+		result_edit_orders.push(editOrder); 
+		result_edit_orders.push(arr_order_items); 
+		res.json(result_edit_orders);
 	},
 	// delete order
 	deleteorder: async function(req, res){
