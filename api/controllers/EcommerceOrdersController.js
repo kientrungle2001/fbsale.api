@@ -87,7 +87,7 @@ module.exports = {
 
 			});
 		});
-
+		res.json(createOrder['id']);
 
 	},
 	// edit order
@@ -145,6 +145,7 @@ module.exports = {
 				});
 			});
 		}
+		res.json(order_id);
 	},
 	// delete order
 	deleteorder: async function(req, res){
