@@ -148,14 +148,14 @@ module.exports = {
 	},
 	// delete order
 	deleteorder: async function(req, res){
-		var order_id = req.param.order_id;
+		var order_id = req.param.id;
 		//delete order_items
 		await EcommerceOrderItems.distroy({'order_id': order_id});
 		//delete orders
 		await EcommerceOrders.distroy({'id': order_id});
 	},
 	showorder: async function(req, res){
-		var order_id = req.param.order_id;
+		var order_id = req.param.id;
 		// lay du lieu bang order
 		var order = await EcommerceOrders.findOne({'id': order_id});
 		// Lay du lieu bang order_items
