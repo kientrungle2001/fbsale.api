@@ -25,12 +25,7 @@ module.exports = {
   // link test ( method: GET): /2125248527733637_2144299215828568/comments?field=from
   fn: async function (inputs, exits) {
     // Lấy danh sách các comments của bài viết 
-<<<<<<< HEAD
-           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?field=id,messsage,full_picture,from{id,name,picture{url}},attachment,created_time,updated_time&access_token='+inputs.token;
-           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?fields=attachment{url},id,messsage,full_picture,from{id,name,picture{url}},created_time,updated_time&access_token='+inputs.token;
-=======
            var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?fields=id,message,full_picture,from{id,name,picture{url}},attachment,created_time,updated_time&access_token='+inputs.token;
->>>>>>> d802b1e43eb9366423e7307372dc024efa7e4532
            var page_options = {method: 'GET', url: page_url, json: true};
            request(page_options, function (err, response) {
            
