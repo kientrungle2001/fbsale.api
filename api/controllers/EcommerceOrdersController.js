@@ -43,8 +43,10 @@ module.exports = {
 		var custommer_name = req.body.custommer_name;
 		var custommer_phone = req.body.custommer_phone;
 		var custommer_address = req.body.custommer_address;
+		var custommer_email = req.body.custommer_email;
 		var total = req.body.total;
 		var discount = req.body.discount;
+		var total_before_tax = req.body.total_before_tax;
 		var user_id = req.body.user_id;
 		var custommer_id = req.body.custommer_id;
 		var shipper_id = req.body.shipper_id;
@@ -57,7 +59,9 @@ module.exports = {
 			'custommer_name':custommer_name,
 			'custommer_phone':custommer_phone,
 			'custommer_address':custommer_address,
+			'custommer_email':custommer_email,
 			'total':total,
+			'total_before_tax':total_before_tax,
 			'discount':discount,
 			'user_id':user_id,
 			'shipper_id':shipper_id,
@@ -65,12 +69,11 @@ module.exports = {
 			'tax':tax,
 			'state':state,
 			'status':status,
-			'payment_date':payment_date,
 			'custommer_id':custommer_id,
 
 		}).fetch();
 		// insert bang order_items
-		var order_items= req.body.order_items;
+		var order_items= req.body.orderitems;
 		order_items.forEach(async function(order_item){
 				await EcommerceOrderItems.create({
 				'order_id': createOrder['id'],
@@ -80,7 +83,7 @@ module.exports = {
 				'product_option_id': order_item['product_option_id'],
 				'quantity': order_item['quantity'],
 				'product_id': order_item['product_id'],
-				'status': order_item['status'],
+				'status': 1,
 
 			});
 		});
