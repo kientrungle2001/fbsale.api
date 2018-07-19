@@ -3,10 +3,7 @@ var request = require('request');
 module.exports = {
 
   friendlyName: 'fb Get Comments',
-
-
   description: 'Trả về danh sách các comments của 1 bài viết ',
-
   inputs: {    
     postId: {
       type: 'string',
