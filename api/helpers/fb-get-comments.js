@@ -26,6 +26,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     // Lấy danh sách các comments của bài viết 
            var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?field=id,messsage,full_picture,from{id,name,picture{url}},attachment,created_time,updated_time&access_token='+inputs.token;
+           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?fields=attachment{url},id,messsage,full_picture,from{id,name,picture{url}},created_time,updated_time&access_token='+inputs.token;
            var page_options = {method: 'GET', url: page_url, json: true};
            request(page_options, function (err, response) {
            

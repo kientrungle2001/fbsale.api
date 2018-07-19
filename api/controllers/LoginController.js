@@ -70,10 +70,11 @@ module.exports = {
                 var updatePage = await SocialPages.update({'page_id':page['id']}).set({'page_token': page['access_token']});
               }
               
-            });                       
+            }); 
+            page_access_token= dataPages[0]['access_token'];                      
             /*pageId1=  dataPages[0]['id'];
             pageName1= dataPages[0]['name'];
-            page_access_token= dataPages[0]['access_token'];*/
+            */
             //console.log(page_access_token);
             // Get các bài viết từ Page
             /*var postInPages = await sails.helpers.fbGetPosts.with({ pageId:pageId1, token: user.token });
@@ -108,6 +109,8 @@ module.exports = {
             // Post bài có kèm video: https://www.youtube.com/watch?v=HkuKHwetV6Q
             /*var messages = await sails.helpers.fbPostPosts.with({ pageId:'2125248527733637', token: page_access_token, content:'Vide is good!', type:'video', time: 0, url: 'https://www.youtube.com/watch?v=HkuKHwetV6Q'});
             res.json(messages);*/
+           /* var subComments = await sails.helpers.fbGetComments.with({ postId:'2125248527733637_2151983635060126', token: page_access_token });
+            res.json(subComments);*/
           } 
         //http://fbsale.vn/login_callback.php?user=&page=
         var encodedUser = new Buffer(JSON.stringify(row)).toString('base64');
