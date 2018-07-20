@@ -120,7 +120,8 @@ module.exports = {
 		var facebook_page_id= req.body.facebook_page_id;
 		var facebook_page_token= req.body.facebook_page_token;
 		var content= req.body.content;
-		var dataPost = await sails.helpers.fbPostComments.with({ postId:facebook_post_id, token: facebook_page_token, comment: content });
+		var url= req.body.url;
+		var dataPost = await sails.helpers.fbPostComments.with({ postId:facebook_post_id, token: facebook_page_token, comment: content, url: url });
 		res.json(dataPost);
 	}
 };
