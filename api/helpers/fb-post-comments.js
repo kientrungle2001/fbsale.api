@@ -41,7 +41,7 @@ module.exports = {
     // Post comments, return comment_id
            var data_post ={
             "message":inputs.comment,
-            "url":inputs.url
+            "attachment_url":inputs.url
           };
            var page_url=  'https://graph.facebook.com/v3.0/'+inputs.postId+'/comments?access_token='+inputs.token;
            var page_options = {method: 'POST', url: page_url, json: data_post};
