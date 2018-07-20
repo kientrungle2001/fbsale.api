@@ -2,10 +2,10 @@ var request = require('request');
 
 module.exports = {
 
-  friendlyName: 'fb Hidden Comments',
+  friendlyName: 'fb Delete Comments',
 
 
-  description: 'Ẩn comments',
+  description: 'Xoa comments',
 
 
   inputs: {    
@@ -26,8 +26,8 @@ module.exports = {
   
   fn: async function (inputs, exits) {
     // Delete Post, return "success": true
-           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.commentId+'/comments?access_token='+inputs.token+'&is_hidden=true';
-           var page_options = {method: 'POST', url: page_url, json: true};
+           var page_url=  'https://graph.facebook.com/v3.0/'+inputs.commentId+'/comments?access_token='+inputs.token;
+           var page_options = {method: 'DELETE', url: page_url, json: true};
            request(page_options, function (err, response) {
             if (err) {
               //return 'null';
