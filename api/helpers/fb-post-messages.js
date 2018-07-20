@@ -29,7 +29,7 @@ module.exports = {
     },
     type: {
       type: 'string',
-      example: 'image',
+      example: 'image, text, audio, video, file',
       description: 'Kiểu file cần gửi: text, image, ...',
       required: true
     }
