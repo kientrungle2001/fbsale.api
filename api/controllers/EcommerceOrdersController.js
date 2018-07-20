@@ -93,7 +93,7 @@ module.exports = {
 	// edit order
 	editorder: async function (req, res){
 		//delete order_items
-		var order_id = req.body.order_id;
+		var order_id = req.query.id;
 		await EcommerceOrderItems.destroy({'order_id': order_id});
 		// edit bang order
 		var custommer_name = req.body.custommer_name;
