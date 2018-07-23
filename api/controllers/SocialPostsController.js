@@ -1,4 +1,11 @@
 request = require('request');
+function nl2br(str, is_xhtml) {
+	if (typeof str === 'undefined' || str === null) {
+		return '';
+	}
+	var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+	return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+}
 module.exports = {
 	cron: async function(req, res) {
 		var page_ids = req.body.page_ids;
@@ -89,6 +96,67 @@ module.exports = {
 			var facebook_page_id = facebook_page_ids[i];
 			var page_token = facebook_page_tokens[i];
 			var posts = await sails.helpers.fbGetFeedPosts.with({ pageId:facebook_page_id, token: page_token });
+			for(var ip = 0; ip < posts.length; ip++) {
+				var post = posts[ip];
+				var postRecord = await SocialPosts.findOrCreate({
+					facebook_post_id: post.id
+				}, {
+					page_id: page_id,
+					facebook_post_id: post.id,
+					facebook_id: facebook_id,
+					type: 'post',
+					content: nl2br(post.message),
+					facebook_user_id: post.from? post.from.id: '',
+					facebook_user_name: post.from ? post.from.name: '',
+					facebook_user_avatar: post.from ? post.from.picture.data.url: '',
+					image: post.full_picture?post.full_picture: '',
+					facebook_parent_post_id: facebook_page_id,
+					createdAt: post.created_time,
+					updatedAt: post.updated_time
+				});
+				var comments = post.comments.data;
+				for (var ic = 0; ic < comments.length; ic++) {
+					var comment = comments[ic];
+					var commentRecord = await SocialPosts.findOrCreate({
+						facebook_post_id: comment.id
+					}, {
+						page_id: page_id,
+						facebook_post_id: comment.id,
+						facebook_id: facebook_id,
+						type: 'comment',
+						content: nl2br(comment.message),
+						facebook_user_id: comment.from? comment.from.id: '',
+						facebook_user_name: comment.from ? comment.from.name: '',
+						facebook_user_avatar: comment.from ? (comment.from.picture ? comment.from.picture.data.url: '') : '',
+						image: comment.full_picture? comment.full_picture: (comment.attachment?comment.attachment.media.image.src: ''),
+						facebook_parent_post_id: post.id,
+						createdAt: comment.created_time,
+						updatedAt: comment.updated_time,
+						parent_id: postRecord.id
+					});
+					var subComments = comment.comments.data;
+					for (var isc = 0; isc < subComments.length; isc++) {
+						var subComment = subComments[isc];
+						var subCommentRecord = await SocialPosts.findOrCreate({
+							facebook_post_id: subComment.id
+						}, {
+							page_id: page_id,
+							facebook_post_id: subComment.id,
+							facebook_id: facebook_id,
+							type: 'subcomment',
+							content: nl2br(subComment.message),
+							facebook_user_id: subComment.from? subComment.from.id: '',
+							facebook_user_name: subComment.from ? subComment.from.name: '',
+							facebook_user_avatar: subComment.from ? (subComment.from.picture ? subComment.from.picture.data.url: '') : '',
+							image: subComment.full_picture? subComment.full_picture: (subComment.attachment?subComment.attachment.media.image.src: ''),
+							facebook_parent_post_id: comment.id,
+							createdAt: subComment.created_time,
+							updatedAt: subComment.updated_time,
+							parent_id: commentRecord.id
+						});
+					}
+				}
+			}
 			posts_of_pages.push(posts);
 		}
 		res.json(posts_of_pages);
