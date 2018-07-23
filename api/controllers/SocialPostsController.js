@@ -135,7 +135,7 @@ module.exports = {
 						updatedAt: comment.updated_time,
 						parent_id: postRecord.id
 					});
-					if(typeof comment.comments !== 'undefined')
+					if(typeof comment.comments !== 'undefined') {
 					var subComments = comment.comments.data;
 					for (var isc = 0; isc < subComments.length; isc++) {
 						var subComment = subComments[isc];
