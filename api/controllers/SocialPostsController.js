@@ -114,6 +114,7 @@ module.exports = {
 					createdAt: post.created_time,
 					updatedAt: post.updated_time
 				});
+				if(typeof post.comments !== 'undefined'){
 				var comments = post.comments.data;
 				for (var ic = 0; ic < comments.length; ic++) {
 					var comment = comments[ic];
@@ -134,6 +135,7 @@ module.exports = {
 						updatedAt: comment.updated_time,
 						parent_id: postRecord.id
 					});
+					if(typeof comment.comments !== 'undefined')
 					var subComments = comment.comments.data;
 					for (var isc = 0; isc < subComments.length; isc++) {
 						var subComment = subComments[isc];
@@ -155,6 +157,8 @@ module.exports = {
 							parent_id: commentRecord.id
 						});
 					}
+					}
+				}
 				}
 			}
 			posts_of_pages.push(posts);
