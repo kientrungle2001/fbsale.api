@@ -6,6 +6,12 @@ function nl2br(str, is_xhtml) {
 	var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
 	return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 }
+function hasPhone(str) {
+	var phoneReg10 = /[\d]{10}/;
+	var phoneReg11 = /[\d]{11}/;
+	var str2 = str.replace(/[\s ]+/g, '');
+	return phoneReg10.test(str2) || phoneReg11.test(str2);
+}
 module.exports = {
 	cron: async function(req, res) {
 		var page_ids = req.body.page_ids;
@@ -133,30 +139,42 @@ module.exports = {
 						facebook_parent_post_id: post.id,
 						createdAt: comment.created_time,
 						updatedAt: comment.updated_time,
-						parent_id: postRecord.id
+						parent_id: postRecord.id,
+						has_phone: hasPhone(comment.message) ? 1 : 0
 					});
 					if(typeof comment.comments !== 'undefined') {
-					var subComments = comment.comments.data;
-					for (var isc = 0; isc < subComments.length; isc++) {
-						var subComment = subComments[isc];
-						var subCommentRecord = await SocialPosts.findOrCreate({
-							facebook_post_id: subComment.id
-						}, {
-							page_id: page_id,
-							facebook_post_id: subComment.id,
-							facebook_id: facebook_id,
-							type: 'subcomment',
-							content: nl2br(subComment.message),
-							facebook_user_id: subComment.from? subComment.from.id: '',
-							facebook_user_name: subComment.from ? subComment.from.name: '',
-							facebook_user_avatar: subComment.from ? (subComment.from.picture ? subComment.from.picture.data.url: '') : '',
-							image: subComment.full_picture? subComment.full_picture: (subComment.attachment?subComment.attachment.media.image.src: ''),
-							facebook_parent_post_id: comment.id,
-							createdAt: subComment.created_time,
-							updatedAt: subComment.updated_time,
-							parent_id: commentRecord.id
-						});
-					}
+						var subComments = comment.comments.data;
+						for (var isc = 0; isc < subComments.length; isc++) {
+							var subComment = subComments[isc];
+							var subCommentRecord = await SocialPosts.findOrCreate({
+								facebook_post_id: subComment.id
+							}, {
+								page_id: page_id,
+								facebook_post_id: subComment.id,
+								facebook_id: facebook_id,
+								type: 'subcomment',
+								content: nl2br(subComment.message),
+								facebook_user_id: subComment.from? subComment.from.id: '',
+								facebook_user_name: subComment.from ? subComment.from.name: '',
+								facebook_user_avatar: subComment.from ? (subComment.from.picture ? subComment.from.picture.data.url: '') : '',
+								image: subComment.full_picture? subComment.full_picture: (subComment.attachment?subComment.attachment.media.image.src: ''),
+								facebook_parent_post_id: comment.id,
+								createdAt: subComment.created_time,
+								updatedAt: subComment.updated_time,
+								parent_id: commentRecord.id,
+								has_phone: hasPhone(subComment.message) ? 1 : 0
+							});
+						}
+					} else {
+						if(hasPhone(subComment.message)) {
+							SocialPosts.update({
+									id: postRecord.id
+							},
+							{
+								has_phone: 1
+							}
+							);
+						}
 					}
 				}
 				}
