@@ -1,10 +1,6 @@
 module.exports = {
   tableName: 'location_wards',
   attributes: {
-    id: {
-        type: 'string',
-        columnType: 'varchar'
-    },
 	name: {
         type: 'string',
         columnType: 'varchar'
