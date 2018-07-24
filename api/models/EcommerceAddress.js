@@ -37,11 +37,6 @@ module.exports = {
     custommer_id: {
         type: 'number',
         columnType: 'int'
-    },
-    //ket noi model ecommerceaddressAddress voi ecommerceaddressCustommmers
-    ref_customer:{
-        collection: 'EcommerceCustommers',
-		via: 'address_id'
     }
   },
   

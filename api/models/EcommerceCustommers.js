@@ -53,11 +53,6 @@ module.exports = {
     ref_order: {
       collection: 'EcommerceOrders',
       via: 'custommer_id'
-    },
-    // ket noi model EcommerceCustommers voi model EcommerceAddress
-    ref_address: {
-      collection: 'EcommerceAddress',
-      via: 'custommer_id'
     }
 
   },
