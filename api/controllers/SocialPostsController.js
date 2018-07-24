@@ -184,13 +184,50 @@ module.exports = {
 		res.json(posts_of_pages);
 	},
 	// Hieen thi cac comments theo pageId
-	getComments: async function(req, res){
+	/*getComments: async function(req, res){
 		var page_ids = req.body.page_ids;
 			var dataPosts = await SocialPosts.find({
 				where: {'type': 'comment', 'page_id': {'in': page_ids} },
 				sort: 'createdAt DESC',
 
 			});
+		res.json(dataPosts);
+	},*/
+	getComments: async function(req, res){
+		var page_ids = req.body.page_ids;
+		var dataGet= {
+			
+			'page_id': {'in': page_ids} 
+
+		};
+		if(req.body.filter.post_ids){
+			dataGet.parent_id = {'in': req.body.filter.post_ids};
+		}
+		if(req.body.filter.type=='comment'){
+			dataGet.type = 'comment';
+		}
+		if(req.body.filter.type=='inbox'){
+			dataGet.type = 'inbox';
+		}
+		if(req.body.filter.unread){
+			dataGet.read = 0;
+		}
+		
+		if(req.body.filter.hasPhone){
+			dataGet.has_phone = 1;
+		}
+		if(req.body.filter.unreplied){
+			dataGet.replied = 0;
+		}
+		/*if(req.body.filter.post_label_ids){
+			dataGet.post_label_ids = 0;
+		}*/
+
+		var dataPosts = await SocialPosts.find({
+				where:dataGet ,
+				sort: 'createdAt DESC',
+
+			}).populate('ref_post_labels');
 		res.json(dataPosts);
 	},
 	// Hieen thi cac Sub Comments theo comment_id

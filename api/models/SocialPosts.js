@@ -59,6 +59,10 @@ module.exports = {
         type: 'number',
         columnType: 'tinyint'
     },
+    replied: {
+        type: 'number',
+        columnType: 'tinyint'
+    },
      // Khai báo liên kết với model SocialPages
     page_id: {
         model: 'SocialPages'
@@ -69,5 +73,6 @@ module.exports = {
         via: 'post_id'
     }
   },
+  
   
 };
