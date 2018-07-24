@@ -38,13 +38,10 @@ module.exports = {
         type: 'number',
         columnType: 'int'
     },
-    newAttr: {
-        type: 'number',
-        columnType: 'int'
-    },
     //ket noi model ecommerceaddressAddress voi ecommerceaddressCustommmers
-    address_id:{
-        model: 'EcommerceCustommers'
+    ref_address_id:{
+        model: 'EcommerceCustommers',
+		via: 'address_id'
     }
   },
   
