@@ -221,10 +221,11 @@ module.exports = {
 				}
 				console.log(label_ids);
 				if(label_ids.length){
-					label_ids.forEach(async function(label_id) {
+					label_ids.forEach(function(label_id) {
 						var post_labels = await SocialPostLabels.find({
 							label_id: label_id
 						});
+						console.log(post_labels);
 						var post_ids = [];
 						post_labels.forEach(function(post_label) {
 							post_ids.push(post_label.post_id);
