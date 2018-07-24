@@ -39,7 +39,7 @@ module.exports = {
         columnType: 'int'
     },
     //ket noi model ecommerceaddressAddress voi ecommerceaddressCustommmers
-    ref_address_id:{
+    ref_customer:{
         model: 'EcommerceCustommers',
 		via: 'address_id'
     }
