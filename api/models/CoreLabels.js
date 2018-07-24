@@ -15,8 +15,9 @@ module.exports = {
         columnType: 'tinyint'
     },
     // Khai bao tham chieu toi model SocialPostLabels
-    ref_postlabels: {
-      collection: 'SocialPostLabels',
+    ref_social_posts: {
+      collection: 'SocialPosts',
+	  through: 'SocialPostLabels',
       via: 'label_id'
     }
 
