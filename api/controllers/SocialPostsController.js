@@ -200,24 +200,26 @@ module.exports = {
 			'page_id': {'in': page_ids} 
 
 		};
-		if(req.body.filter.post_ids){
-			dataGet.parent_id = {'in': req.body.filter.post_ids};
-		}
-		if(req.body.filter.type=='comment'){
-			dataGet.type = 'comment';
-		}
-		if(req.body.filter.type=='inbox'){
-			dataGet.type = 'inbox';
-		}
-		if(req.body.filter.unread){
-			dataGet.read = 0;
-		}
-		
-		if(req.body.filter.hasPhone){
-			dataGet.has_phone = 1;
-		}
-		if(req.body.filter.unreplied){
-			dataGet.replied = 0;
+		if(req.body.filter) {
+			if(req.body.filter.post_ids){
+				dataGet.parent_id = {'in': req.body.filter.post_ids};
+			}
+			if(req.body.filter.type=='comment'){
+				dataGet.type = 'comment';
+			}
+			if(req.body.filter.type=='inbox'){
+				dataGet.type = 'inbox';
+			}
+			if(req.body.filter.unread){
+				dataGet.read = 0;
+			}
+			
+			if(req.body.filter.hasPhone){
+				dataGet.has_phone = 1;
+			}
+			if(req.body.filter.unreplied){
+				dataGet.replied = 0;
+			}
 		}
 		/*if(req.body.filter.post_label_ids){
 			dataGet.post_label_ids = 0;
