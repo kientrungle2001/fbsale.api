@@ -250,6 +250,15 @@ module.exports = {
 			if(typeof req.body.filter.unreplied !== 'undefined' && (req.body.filter.unreplied === true || req.body.filter.unreplied === 'true')){
 				dataGet.replied = 0;
 			}
+			if(typeof req.body.filter.keyword !== 'undefined')){
+				var keyword = req.body.filter.keyword.trim();
+				if(keyword !== '') {
+					dataGet['or'] = [
+						{content: {like: '%'+keyword+'%'}},
+						{facebook_user_name: {like: '%'+keyword+'%'}}
+					];
+				}
+			}
 		}
 		if(typeof dataGet.type == 'undefined') {
 			dataGet.type = {'in': ['comment', 'inbox']};
