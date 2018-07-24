@@ -221,6 +221,7 @@ module.exports = {
 				}
 				console.log(label_ids);
 				if(label_ids.length){
+					dataGet.id = [];
 					for(var il = 0; il < label_ids.length; il++) {
 						label_id = label_ids[il];
 						var post_labels = await SocialPostLabels.find({
@@ -232,7 +233,7 @@ module.exports = {
 							aaa_post_ids.push(post_label.post_id);
 						});
 						console.log(aaa_post_ids);
-						dataGet.id = {'in': aaa_post_ids};
+						dataGet.id.push( {'in': aaa_post_ids} );
 						console.log({'in': aaa_post_ids});
 					}
 				}
