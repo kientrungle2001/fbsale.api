@@ -201,8 +201,15 @@ module.exports = {
 
 		};
 		if(req.body.filter) {
-			if(req.body.filter.post_ids){
-				dataGet.parent_id = {'in': req.body.filter.post_ids};
+			if(typeof req.body.filter.post_ids !== 'undefined'){
+				var post_ids = [];
+				for(var post_id in req.body.filter.post_ids) {
+					if(req.body.filter.post_ids[post_id] === 'true') {
+						post_ids.push(post_id);
+					}
+				}
+				if(post_ids.length)
+					dataGet.parent_id = {'in': post_ids};
 			}
 			if(req.body.filter.type=='comment'){
 				dataGet.type = 'comment';
