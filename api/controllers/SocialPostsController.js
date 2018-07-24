@@ -221,8 +221,9 @@ module.exports = {
 				}
 				console.log(label_ids);
 				if(label_ids.length){
-					label_ids.forEach(function(label_id) {
-						var post_labels = SocialPostLabels.find({
+					for(var il = 0; il < label_ids.length; il++) {
+						label_id = label_ids[il];
+						var post_labels = await SocialPostLabels.find({
 							label_id: label_id
 						});
 						console.log(post_labels);
@@ -233,8 +234,7 @@ module.exports = {
 						console.log(aaa_post_ids);
 						dataGet.id = {'in': aaa_post_ids};
 						console.log({'in': aaa_post_ids});
-					});
-					
+					}
 				}
 			}
 			if(req.body.filter.type=='comment'){
