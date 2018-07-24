@@ -211,6 +211,30 @@ module.exports = {
 				if(post_ids.length)
 					dataGet.parent_id = {'in': post_ids};
 			}
+			if(typeof req.body.filter.post_label_ids !== 'undefined'){
+				var post_label_ids = [];
+				for(var post_label_id in req.body.filter.post_label_ids) {
+					if(req.body.filter.post_label_ids[post_label_id] === 'true') {
+						post_label_ids.push(post_label_id);
+					}
+				}
+				if(post_label_ids.length){
+					dataGet.id = [];
+					post_label_ids.forEach(async function(post_label_id) {
+						var post_labels = await SocialPostLabels.find({
+							where: {
+								label_id: post_label_id
+							}
+						});
+						var post_ids = [];
+						post_labels.forEach(function(post_label) {
+							post_ids.push(post_label.post_id);
+						});
+						dataGet.id.push({'in': post_ids});
+					});
+					
+				}
+			}
 			if(req.body.filter.type=='comment'){
 				dataGet.type = 'comment';
 			}
