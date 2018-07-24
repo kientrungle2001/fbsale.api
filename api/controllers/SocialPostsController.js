@@ -226,11 +226,13 @@ module.exports = {
 							label_id: label_id
 						});
 						console.log(post_labels);
-						var post_ids = [];
+						var aaa_post_ids = [];
 						post_labels.forEach(function(post_label) {
-							post_ids.push(post_label.post_id);
+							aaa_post_ids.push(post_label.post_id);
 						});
-						dataGet.id = {'in': post_ids};
+						console.log(aaa_post_ids);
+						dataGet.id = {'in': aaa_post_ids};
+						console.log({'in': aaa_post_ids});
 					});
 					
 				}
