@@ -216,7 +216,7 @@ module.exports = {
 				var label_ids = [];
 				for(var label_id in req.body.filter.post_label_ids) {
 					if(req.body.filter.post_label_ids[label_id] === 'true') {
-						label_ids.push(label_id);
+						label_ids.push(label_id.replace('label_', ''));
 					}
 				}
 				console.log(label_ids);
