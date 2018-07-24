@@ -53,6 +53,10 @@ module.exports = {
     ref_order: {
       collection: 'EcommerceOrders',
       via: 'custommer_id'
+    },
+	ref_addresses: {
+      collection: 'EcommerceAddress',
+      via: 'custommer_id'
     }
 
   },
