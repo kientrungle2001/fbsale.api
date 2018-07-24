@@ -219,22 +219,18 @@ module.exports = {
 						label_ids.push(label_id.replace('label_', ''));
 					}
 				}
-				console.log(label_ids);
 				if(label_ids.length){
-					dataGet.id = [];
+					dataGet['and'] = [];
 					for(var il = 0; il < label_ids.length; il++) {
 						label_id = label_ids[il];
 						var post_labels = await SocialPostLabels.find({
 							label_id: label_id
 						});
-						console.log(post_labels);
 						var aaa_post_ids = [];
 						post_labels.forEach(function(post_label) {
 							aaa_post_ids.push(post_label.post_id);
 						});
-						console.log(aaa_post_ids);
-						dataGet.id.push( {'in': aaa_post_ids} );
-						console.log({'in': aaa_post_ids});
+						dataGet['and'].push( {id: {'in': aaa_post_ids}} );
 					}
 				}
 			}
