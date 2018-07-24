@@ -210,14 +210,14 @@ module.exports = {
 			if(req.body.filter.type=='inbox'){
 				dataGet.type = 'inbox';
 			}
-			if(typeof req.body.filter.unread !== 'undefined' && req.body.filter.unread === true){
+			if(typeof req.body.filter.unread !== 'undefined' && (req.body.filter.unread === true || req.body.filter.unread === 'true')){
 				dataGet.read = 0;
 			}
 			
-			if(typeof req.body.filter.hasPhone !== 'undefined' && req.body.filter.hasPhone === true){
+			if(typeof req.body.filter.hasPhone !== 'undefined' && (req.body.filter.hasPhone === true || req.body.filter.hasPhone === 'true')){
 				dataGet.has_phone = 1;
 			}
-			if(typeof req.body.filter.unreplied !== 'undefined' && req.body.filter.unreplied === true){
+			if(typeof req.body.filter.unreplied !== 'undefined' && (req.body.filter.unreplied === true || req.body.filter.unreplied === 'true')){
 				dataGet.replied = 0;
 			}
 		}
