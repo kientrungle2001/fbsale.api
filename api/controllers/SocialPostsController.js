@@ -221,6 +221,9 @@ module.exports = {
 				dataGet.replied = 0;
 			}
 		}
+		if(!dataGet.type) {
+			dataGet.type = {'in': ['comment', 'inbox']};
+		}
 		/*if(req.body.filter.post_label_ids){
 			dataGet.post_label_ids = 0;
 		}*/
