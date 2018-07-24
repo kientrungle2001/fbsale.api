@@ -212,6 +212,7 @@ module.exports = {
 					dataGet.parent_id = {'in': post_ids};
 			}
 			if(typeof req.body.filter.post_label_ids !== 'undefined'){
+				console.log(req.body.filter.post_label_ids);
 				var label_ids = [];
 				for(var label_id in req.body.filter.post_label_ids) {
 					if(req.body.filter.post_label_ids[label_id] === 'true') {
