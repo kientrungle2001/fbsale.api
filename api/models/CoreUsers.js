@@ -64,8 +64,7 @@ module.exports = {
     // Khai bao ket noi toi model CoreRoles
     role_id: {
         model: 'CoreRoles'
-    },
-    
+    }
 
   },
   checkUpdate: async function(req){

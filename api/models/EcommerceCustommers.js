@@ -57,7 +57,7 @@ module.exports = {
     // ket noi model EcommerceCustommers voi model EcommerceAddress
     ref_address: {
       collection: 'EcommerceAddress',
-      via: 'address_id'
+      via: 'custommer_id'
     }
 
   },
