@@ -35,14 +35,9 @@ module.exports = {
         columnType: 'varchar'
     },
     custommer_id: {
-        type: 'number',
-        columnType: 'int'
-    },
-    //ket noi model ecommerceaddressAddress voi ecommerceaddressCustommmers
-    ref_customer:{
-        collection: 'EcommerceCustommers',
-		via: 'address_id'
+        model: 'EcommerceCustommers'
     }
+	
   },
   
 };
