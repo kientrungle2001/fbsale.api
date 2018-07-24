@@ -35,9 +35,9 @@ module.exports = {
         columnType: 'varchar'
     },
     custommer_id: {
-        type: 'number',
-        columnType: 'int'
+        model: 'EcommerceCustommers'
     }
+	
   },
   
 };
