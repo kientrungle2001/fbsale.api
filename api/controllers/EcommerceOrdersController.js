@@ -110,6 +110,7 @@ module.exports = {
 		var status = 1;
 		var payment_date = new Date();
 		var shipping_fee = req.body.order.shipping_fee;
+		var user_id = req.body.user.id;
 		var createOrder = await EcommerceOrders.create({
 			'custommer_name':custommer_name,
 			'custommer_phone':custommer_phone,
@@ -118,7 +119,7 @@ module.exports = {
 			'total':total,
 			'total_before_tax':total_before_tax,
 			'discount':discount,
-			'user_id':user_id,
+			'user_id': user_id,
 			'shipper_id':shipper_id,
 			'total_before_discount':total_before_discount,
 			'tax':tax,
