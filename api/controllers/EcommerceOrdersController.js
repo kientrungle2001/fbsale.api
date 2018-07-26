@@ -1,3 +1,5 @@
+var dateFormat = require('dateformat');
+
 module.exports = {
 	datatable: async function (req, res) {
 		var columns = req.body.columns;
@@ -90,6 +92,58 @@ module.exports = {
 		res.json(createOrder['id']);
 
 	},
+	
+	customerCreateOrder: async function(req, res){
+		// insert bang order
+		var custommer_name = req.body.customer.name;
+		var custommer_phone = req.body.customer.phone;
+		var custommer_address = req.body.customer.address;
+		var custommer_email = req.body.customer.email;
+		var total = req.body.order.total;
+		var discount = req.body.order.discount;
+		var total_before_tax = req.body.order.total_before_tax;
+		var custommer_id = req.body.custommer.id;
+		var shipper_id = req.body.order.shipper_id;
+		var total_before_discount = req.body.order.total_before_discount;
+		var tax = req.body.order.tax;
+		var state = req.body.order.state;
+		var status = 1;
+		var payment_date = new Date();
+		var shipping_fee = req.body.order.shipping_fee;
+		var createOrder = await EcommerceOrders.create({
+			'custommer_name':custommer_name,
+			'custommer_phone':custommer_phone,
+			'custommer_address':custommer_address,
+			'custommer_email':custommer_email,
+			'total':total,
+			'total_before_tax':total_before_tax,
+			'discount':discount,
+			'user_id':user_id,
+			'shipper_id':shipper_id,
+			'total_before_discount':total_before_discount,
+			'tax':tax,
+			'state':state,
+			'status':status,
+			'custommer_id':custommer_id,
+			'shipping_fee': shipping_fee
+		}).fetch();
+		// insert bang order_items
+		var order_items= req.body.order_items;
+		order_items.forEach(async function(order_item){
+				await EcommerceOrderItems.create({
+				'order_id': createOrder['id'],
+				'price': order_item['price'],
+				'product_id': order_item['product_id'],
+				'product_option_id': order_item['product_option_id'],
+				'quantity': order_item['quantity'],
+				'total': order_item['total'],
+				'status': 1,
+			});
+		});
+		res.json(createOrder['id']);
+
+	},
+	
 	// edit order
 	editorder: async function (req, res){
 		//delete order_items

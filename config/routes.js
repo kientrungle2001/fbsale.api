@@ -86,6 +86,9 @@ module.exports.routes = {
   'POST /ecommerceorders/createorder':{
     action: 'EcommerceOrders/createorder'
   },
+  'POST /ecommerceorders/customerCreateOrder':{
+    action: 'EcommerceOrders/customerCreateOrder'
+  },
    'POST /ecommerceorders/editorder':{
     action: 'EcommerceOrders/editorder'
   },
