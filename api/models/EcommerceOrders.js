@@ -42,7 +42,7 @@ module.exports = {
         columnType: 'float'
     },
     payment_date: {
-        type: 'string',
+        type: 'ref',
         columnType: 'datetime'
     },
     discount: {

@@ -28,8 +28,8 @@ module.exports.routes = {
     view: 'pages/homepage'
   },
   'GET /testApi': {
-   /* action: 'EcommerceOrders/deleteorder'*/
-    action: 'SocialPosts/testCollection'
+   action: 'EcommerceOrders/deleteorder'
+    
   },
 
   '/login': {
