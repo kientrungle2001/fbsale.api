@@ -69,7 +69,8 @@ module.exports = {
     },
     // ket noi 1- 1 giua model SocialPosts voi SocialPostLabels
     ref_post_labels:{
-        collection: 'SocialPostLabels',
+		collection: 'CoreLabels',
+        through: 'SocialPostLabels',
         via: 'post_id'
     }
   },

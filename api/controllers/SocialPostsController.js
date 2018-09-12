@@ -200,25 +200,71 @@ module.exports = {
 			'page_id': {'in': page_ids} 
 
 		};
-		if(req.body.filter.post_ids){
-			dataGet.parent_id = {'in': req.body.filter.post_ids};
+		if(req.body.filter) {
+			if(typeof req.body.filter.post_ids !== 'undefined'){
+				var post_ids = [];
+				for(var post_id in req.body.filter.post_ids) {
+					if(req.body.filter.post_ids[post_id] === 'true') {
+						post_ids.push(post_id);
+					}
+				}
+				if(post_ids.length)
+					dataGet.parent_id = {'in': post_ids};
+			}
+			if(typeof req.body.filter.post_label_ids !== 'undefined'){
+				console.log(req.body.filter.post_label_ids);
+				var label_ids = [];
+				for(var label_id in req.body.filter.post_label_ids) {
+					if(req.body.filter.post_label_ids[label_id] === 'true') {
+						label_ids.push(label_id.replace('label_', ''));
+					}
+				}
+				if(label_ids.length){
+					dataGet['and'] = [];
+					for(var il = 0; il < label_ids.length; il++) {
+						label_id = label_ids[il];
+						var post_labels = await SocialPostLabels.find({
+							label_id: label_id
+						});
+						var aaa_post_ids = [];
+						post_labels.forEach(function(post_label) {
+							aaa_post_ids.push(post_label.post_id);
+						});
+						dataGet['and'].push( {id: {'in': aaa_post_ids}} );
+					}
+				}
+			}
+			if(req.body.filter.type=='comment'){
+				dataGet.type = 'comment';
+			}
+			if(req.body.filter.type=='inbox'){
+				dataGet.type = 'inbox';
+			}
+			if(typeof req.body.filter.unread !== 'undefined' && (req.body.filter.unread === true || req.body.filter.unread === 'true')){
+				dataGet.read = 0;
+			}
+			
+			if(typeof req.body.filter.hasPhone !== 'undefined' && (req.body.filter.hasPhone === true || req.body.filter.hasPhone === 'true')){
+				dataGet.has_phone = 1;
+			}
+			if(typeof req.body.filter.unreplied !== 'undefined' && (req.body.filter.unreplied === true || req.body.filter.unreplied === 'true')){
+				dataGet.replied = 0;
+			}
+			if(typeof req.body.filter.keyword !== 'undefined'){
+				var keyword = req.body.filter.keyword.trim();
+				if(keyword !== '') {
+					dataGet['or'] = [
+						{content: {like: '%'+keyword+'%'}},
+						{facebook_user_name: {like: '%'+keyword+'%'}}
+					];
+				}
+			}
 		}
-		if(req.body.filter.type=='comment'){
-			dataGet.type = 'comment';
-		}
-		if(req.body.filter.type=='inbox'){
-			dataGet.type = 'inbox';
-		}
-		if(req.body.filter.unread){
-			dataGet.read = 0;
+		if(typeof dataGet.type == 'undefined') {
+			dataGet.type = {'in': ['comment', 'inbox']};
 		}
 		
-		if(req.body.filter.hasPhone){
-			dataGet.has_phone = 1;
-		}
-		if(req.body.filter.unreplied){
-			dataGet.replied = 0;
-		}
+		console.log(dataGet);
 		/*if(req.body.filter.post_label_ids){
 			dataGet.post_label_ids = 0;
 		}*/

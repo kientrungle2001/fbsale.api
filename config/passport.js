@@ -46,9 +46,15 @@ var verifyHandler = function(req, token, tokenSecret, profile, done) {
   callbackURL: "https://localhost:1337/auth/facebook/callback",
   passReqToCallback: true
 }, verifyHandler));*/
-passport.use(new FacebookStrategy({
+/*passport.use(new FacebookStrategy({
   clientID: "299054264171222", // Use your Facebook App Id
   clientSecret: "7088e35e017968c68af735fe9d1918f9", // Use your Facebook App Secret
+  callbackURL: "https://localhost:1337/auth/facebook/callback",
+  passReqToCallback: true
+}, verifyHandler));*/
+passport.use(new FacebookStrategy({
+  clientID: "180896868946666", // Use your Facebook App Id
+  clientSecret: "ef08f1228da60f0331c8907a06ce3503", // Use your Facebook App Secret
   callbackURL: "https://localhost:1337/auth/facebook/callback",
   passReqToCallback: true
 }, verifyHandler));
